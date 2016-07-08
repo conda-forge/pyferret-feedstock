@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "${FER_LIBS}" ]; then
+    echo "**ERROR: Ferret environment variables are not defined"
+    exit 1
+fi
+
+
+if echo "$@" | grep -q -- "-linebuffer"; then
+    GFORTRAN_UNBUFFERED_PRECONNECTED=1
+    export GFORTRAN_UNBUFFERED_PRECONNECTED
+    python_flags="-u -i"
+else
+    python_flags="-i"
+fi
+
+python ${python_flags} -c "import sys; import pyferret; (errval, errmsg) = pyferret.init(sys.argv[1:], True)" "$@"

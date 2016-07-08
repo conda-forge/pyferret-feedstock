@@ -13,7 +13,7 @@ source:
         - site_specific.patch
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win or py3k or osx]
 
 requirements:
