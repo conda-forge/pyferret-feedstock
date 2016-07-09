@@ -23,4 +23,5 @@ mkdir -p $DEACTIVATE_DIR
 
 cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/pyferret-activate.sh
 cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pyferret-deactivate.sh
-cp $RECIPE_DIR/scripts/pyferret $PREFIX/bin
+cp $RECIPE_DIR/scripts/pyferret $PREFIX/bin/pyferret
+ln -s $PREFIX/bin/pyferret $PREFIX/bin/ferret
