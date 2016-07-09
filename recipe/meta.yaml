@@ -13,7 +13,7 @@ source:
         - site_specific.patch
 
 build:
-    number: 1
+    number: 2
     skip: True  # [win or py3k or osx]
 
 requirements:
@@ -29,6 +29,7 @@ requirements:
         - numpy x.x
         - cairo
         - pango
+        - pyqt
         - libgcc
 
 test:
