@@ -3,8 +3,7 @@
 export _CONDA_SET_FERRET=1
 
 ## Dataset directory (not packaged yet).
-export FER_DSETS="$CONDA_PREFIX/fer_dsets"
-
+export FER_DSETS="$CONDA_PREFIX/share/fer_dsets"
 
 ## Space-separated list of default sites for ThreddsBrowser
 ## (SET /DATA /BROWSE or its alias OPEN)
