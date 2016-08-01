@@ -104,7 +104,7 @@ diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/platform_speci
 -			  -I/usr/lib64/glib-2.0/include \
 +			  -I$(PREFIX)/include/pango-1.0 \
 +			  -I$(PREFIX)/include/glib-2.0 \
-+			  -I$(PREFIX)/lib64/glib-2.0/include \
++			  -I$(PREFIX)/lib/glib-2.0/include \
  			  -I$(NETCDF4_DIR)/include
  
  	MYDEFINES	= -Dcrptd_cat_argument \
