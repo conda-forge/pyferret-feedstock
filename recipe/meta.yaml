@@ -23,18 +23,20 @@ requirements:
         - numpy x.x
         - cairo
         - pango
-        - gcc
+        - gcc  # [not win]
     run:
         - netcdf-fortran 4.4.*
         - numpy x.x
         - cairo
         - pango
         - pyqt
-        - libgcc
+        - libgfortran  # [not win]
 
 test:
     imports:
         - pyferret
+    commands:
+        - conda inspect linkages -n _test pyferret  # [not win]
 
 about:
     home: http://ferret.pmel.noaa.gov/Ferret
