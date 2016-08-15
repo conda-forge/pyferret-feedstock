@@ -6,31 +6,34 @@ package:
 
 source:
     fn: pyferret-{{ version }}.tar.gz
-    url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}-final.tar.gz
-    sha256: b6595198a276109c83d987b153c456c3f146918ee783f22501ea634da4d17853
-    patches:
-        - site_specific.patch
+    url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}-final.tar.gz  # [linux]
+    url: https://github.com/NOAA-PMEL/PyFerret/releases/download/v{{ version }}-final/PyFerret-{{ version }}-MacOSX.tar.gz  # [osx]
+    sha256: b6595198a276109c83d987b153c456c3f146918ee783f22501ea634da4d17853  # [linux]
+    sha256: 9c9f763b0377a636b54f1db76b6d0b26c07746c0c121fe0eea415afa46f3d78b  # [osx]
+    patches:  # [linux]
+        - site_specific.patch  # [linux]
 
 build:
     number: 4
-    skip: True  # [not (linux and py27)]
+    skip: True  # [not (unix and py27)]
 
 requirements:
     build:
         - python
         - numpy
-        - netcdf-fortran 4.4.*
-        - cairo
-        - pango
-        - gcc
+        - netcdf-fortran 4.4.*  # [linux]
+        - cairo  # [linux]
+        - pango  # [linux]
+        - gcc  # [linux]
     run:
         - python
         - numpy
-        - netcdf-fortran 4.4.*
-        - cairo
-        - pango
-        - pyqt
-        - libgcc
+        - netcdf-fortran 4.4.*  # [linux]
+        - cairo  # [linux]
+        - pango  # [linux]
+        - pyqt  # [linux]
+        - libgcc  # [linux]
+        - libgfortran  # [osx]
 
 test:
     imports:
