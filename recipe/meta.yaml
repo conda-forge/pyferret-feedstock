@@ -20,17 +20,18 @@ requirements:
         - python
         - numpy
         - netcdf-fortran 4.4.*
-        - cairo
-        - pango
-        - gcc
+        - cairo 1.12.*
+        - pango 1.40.*
+        - gcc  # [not win]
     run:
         - python
         - numpy
         - netcdf-fortran 4.4.*
-        - cairo
-        - pango
         - pyqt
-        - libgcc
+        - cairo 1.12.*
+        - pango 1.40.*
+        - libgcc  # [linux]
+        - libgfortran  # [osx]
 
 test:
     imports:
