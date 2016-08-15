@@ -37,6 +37,7 @@ test:
         - pyferret
     commands:
         - conda inspect linkages -n _test pyferret  # [not win]
+        - conda inspect objects -n _test pyferret  # [osx]
 
 about:
     home: http://ferret.pmel.noaa.gov/Ferret
