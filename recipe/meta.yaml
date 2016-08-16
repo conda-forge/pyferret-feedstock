@@ -21,17 +21,17 @@ requirements:
     build:
         - python
         - numpy
-        - netcdf-fortran 4.4.*  # [linux]
-        - cairo  # [linux]
-        - pango  # [linux]
+        - netcdf-fortran 4.4.*
+        - cairo
+        - pango
         - gcc  # [linux]
     run:
         - python
         - numpy
-        - netcdf-fortran 4.4.*  # [linux]
-        - cairo  # [linux]
-        - pango  # [linux]
-        - pyqt  # [linux]
+        - netcdf-fortran 4.4.*
+        - cairo
+        - pango
+        - pyqt
         - libgcc  # [linux]
         - libgfortran  # [osx]
 
