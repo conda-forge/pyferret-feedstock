@@ -27,9 +27,9 @@ requirements:
         - python
         - numpy
         - netcdf-fortran 4.4.*
-        - pyqt
         - cairo 1.12.*
         - pango 1.40.*
+        - pyqt
         - libgcc  # [linux]
         - libgfortran  # [osx]
 
@@ -38,6 +38,7 @@ test:
         - pyferret
     commands:
         - conda inspect linkages -n _test pyferret  # [not win]
+        - conda inspect objects -n _test nco  # [osx]
 
 about:
     home: http://ferret.pmel.noaa.gov/Ferret
