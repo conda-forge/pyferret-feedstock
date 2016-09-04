@@ -7,7 +7,7 @@ os: osx
 
 env:
   matrix:
-    
+
     - CONDA_PY=27
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
@@ -32,6 +32,8 @@ install:
       conda config --set show_channel_urls true
       conda install --yes --quiet conda-forge-build-setup
       source run_conda_forge_build_setup
+      # Bypass the control-freak run_conda_forge_build_setup and use versions that do work.
+      conda install --yes conda-build=1.21.11
 
 script:
   - conda build ./recipe

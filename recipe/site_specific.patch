@@ -1,16 +1,3 @@
-diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/external_functions/ef_utility/platform_specific.mk.x86_64-linux PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/external_functions/ef_utility/platform_specific.mk.x86_64-linux
---- external_functions/ef_utility/platform_specific.mk.x86_64-linux	2016-06-29 20:09:51.000000000 -0300
-+++ external_functions/ef_utility/platform_specific.mk.x86_64-linux	2016-07-06 14:40:59.260485464 -0300
-@@ -23,8 +23,7 @@
- LD		= gfortran
- LD_DYN_FLAGS	= -fPIC -m64 -shared -Wl,--no-undefined
- SYSLIBS		= ../ef_utility/copy_ferret_ef_mem_subsc.o \
--		  -L$(INSTALL_FER_DIR)/lib64/$(PYTHON_EXE)/site-packages/pyferret \
--		  -L$(INSTALL_FER_DIR)/lib/$(PYTHON_EXE)/site-packages/pyferret \
-+		  -L$(SP_DIR)/pyferret \
- 		  -lpyferret
- 
- # Directly compile the .F source files to the .o object files
 diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/external_functions/ef_utility/site_specific.mk PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/external_functions/ef_utility/site_specific.mk
 --- external_functions/ef_utility/site_specific.mk	2016-06-29 20:09:51.000000000 -0300
 +++ external_functions/ef_utility/site_specific.mk	2016-07-06 14:34:56.858490288 -0300

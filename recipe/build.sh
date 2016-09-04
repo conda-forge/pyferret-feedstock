@@ -32,6 +32,7 @@ if [ $(uname) == Darwin ]; then
     export MACOSX_DEPLOYMENT_TARGET="10.9"
     export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
     export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
 fi
 
 export LIBZ_DIR=$PREFIX

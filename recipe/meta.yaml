@@ -10,7 +10,9 @@ source:
     url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ commit }}.tar.gz
     sha256: e702f4124cfa3fcfa898f5ec6075c548a5b958c70f99f60faa2119f325fe2127
     patches:
-        - site_specific.patch
+        - site_specific.patch  # [not win]
+        - linux-platform_specific.patch  # [linux]
+        - osx-platform_specific.patch  # [osx]
 
 build:
     number: 4
@@ -39,7 +41,7 @@ test:
         - pyferret
     commands:
         - conda inspect linkages -n _test pyferret  # [not win]
-        - conda inspect objects -n _test nco  # [osx]
+        - conda inspect objects -n _test pyferret  # [osx]
 
 about:
     home: http://ferret.pmel.noaa.gov/Ferret
