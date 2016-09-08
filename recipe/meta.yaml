@@ -1,19 +1,22 @@
-{% set version = "7.0.0" %}
+{% set version = "7.0.1" %}
+{% set commit = "9caba309e91610d51159b610076886908f4573aa" %}
 
 package:
     name: pyferret
-    version: {{ version }}
+    version: {{ version }}.dev
 
 source:
     fn: pyferret-{{ version }}.tar.gz
-    url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}-final.tar.gz
-    sha256: b6595198a276109c83d987b153c456c3f146918ee783f22501ea634da4d17853
+    url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ commit }}.tar.gz
+    sha256: e702f4124cfa3fcfa898f5ec6075c548a5b958c70f99f60faa2119f325fe2127
     patches:
-        - site_specific.patch
+        - site_specific.patch  # [not win]
+        - linux-platform_specific.patch  # [linux]
+        - osx-platform_specific.patch  # [osx]
 
 build:
     number: 4
-    skip: True  # [not (linux and py27)]
+    skip: True  # [not (unix and py27)]
 
 requirements:
     build:
@@ -27,9 +30,9 @@ requirements:
         - python
         - numpy
         - netcdf-fortran 4.4.*
-        - pyqt
         - cairo 1.12.*
         - pango 1.40.*
+        - pyqt
         - libgcc  # [linux]
         - libgfortran  # [osx]
 
@@ -38,6 +41,7 @@ test:
         - pyferret
     commands:
         - conda inspect linkages -n _test pyferret  # [not win]
+        - conda inspect objects -n _test pyferret  # [osx]
 
 about:
     home: http://ferret.pmel.noaa.gov/Ferret

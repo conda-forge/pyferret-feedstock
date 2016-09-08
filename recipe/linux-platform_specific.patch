@@ -1,0 +1,12 @@
+--- external_functions/ef_utility/platform_specific.mk.x86_64-linux	2016-08-26 21:50:00.000000000 -0300
++++ external_functions/ef_utility/platform_specific.mk.x86_64-linux	2016-09-07 11:05:27.418727344 -0300
+@@ -23,8 +23,7 @@
+ LD		= gfortran
+ LD_DYN_FLAGS	= -fPIC -m64 -shared -Wl,--no-undefined
+ SYSLIBS		= ../ef_utility/copy_ferret_ef_mem_subsc.o \
+-		  -L$(INSTALL_FER_DIR)/lib64/$(PYTHON_EXE)/site-packages/pyferret \
+-		  -L$(INSTALL_FER_DIR)/lib/$(PYTHON_EXE)/site-packages/pyferret \
++		  -L$(SP_DIR)/pyferret \
+ 		  -lpyferret
+ 
+ # Directly compile the .F source files to the .o object files

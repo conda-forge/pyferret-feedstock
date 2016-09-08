@@ -70,9 +70,9 @@ Terminology
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyferret-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/pyferret-feedstock)
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyferret-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyferret-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyferret-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyferret-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyferret-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyferret-feedstock/branch/master)
+Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
 
 Current release info
 ====================
@@ -83,12 +83,17 @@ Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyferret/b
 Updating pyferret-feedstock
 ===========================
 
-If you would like to improve the pyferret recipe, please take the normal
-route of forking this repository and submitting a PR. Upon submission, your changes will
-be run on the appropriate platforms to give the reviewer an opportunity to confirm that the
-changes result in a successful build. Once merged, the recipe will be re-built and uploaded
-automatically to the conda-forge channel, whereupon they will be available for everybody to
-install and use.
+If you would like to improve the pyferret recipe or build a new
+package version, please fork this repository and submit a PR. Upon submission,
+your changes will be run on the appropriate platforms to give the reviewer an
+opportunity to confirm that the changes result in a successful build. Once
+merged, the recipe will be re-built and uploaded automatically to the
+`conda-forge` channel, whereupon the built conda packages will be available for
+everybody to install and use from the `conda-forge` channel.
+Note that all branches in the conda-forge/pyferret-feedstock are
+immediately built and any created packages are uploaded, so PRs should be based
+on branches in forks and branches in the main repository should only be used to
+build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase

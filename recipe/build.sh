@@ -1,56 +1,70 @@
 #!/bin/bash
 
-if [ $(uname) == Linux ]; then
-  export LIBZ_DIR=$PREFIX
-  export READLINE_DIR=$PREFIX
-  export HDF5_DIR=$PREFIX
-  export NETCDF4_DIR=$PREFIX
-  export FER_DIR=$PREFIX
-  export FC="gfortran"
-  export LD_X11="-L/usr/lib64 -lX11"
+set -e # Abort on error.
 
-  # set in conda_forge_build_setup to `-j2 ${MAKEFLAGS}` and that breaks the build here.
-  export MAKEFLAGS=""
+export PING_SLEEP=30s
+export WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export BUILD_OUTPUT=$WORKDIR/build.out
 
-  make
-  # make run_tests  # Image mismatch issues.
-  make install
+touch $BUILD_OUTPUT
 
-  # Activate pyferret env vars.
-  ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
-  DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
-  mkdir -p $ACTIVATE_DIR
-  mkdir -p $DEACTIVATE_DIR
+dump_output() {
+   echo Tailing the last 500 lines of output:
+   tail -500 $BUILD_OUTPUT
+}
+error_handler() {
+  echo ERROR: An error was encountered with the build.
+  dump_output
+  exit 1
+}
 
-  cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/pyferret-activate.sh
-  cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pyferret-deactivate.sh
-  cp $RECIPE_DIR/scripts/pyferret $PREFIX/bin/pyferret
-  ln -s $PREFIX/bin/pyferret $PREFIX/bin/ferret
-fi
+# If an error occurs, run our error handler to output a tail of the build.
+trap 'error_handler' ERR
 
+# Set up a repeating loop to send some output to Travis.
+bash -c "while true; do echo \$(date) - building ...; sleep $PING_SLEEP; done" &
+PING_LOOP_PID=$!
+
+## START BUILD
 if [ $(uname) == Darwin ]; then
-  mkdir -p $PREFIX/bin/build_fonts/unix
-  cp $SRC_DIR/bin/* $PREFIX/bin/
-  cp $SRC_DIR/bin/build_fonts/* $PREFIX/bin/build_fonts
-  cp $SRC_DIR/bin/build_fonts/unix/* $PREFIX/bin/build_fonts/unix
-
-  mkdir -p $PREFIX/contrib
-  cp $SRC_DIR/contrib/* $PREFIX/contrib
-
-  mkdir -p $PREFIX/examples
-  cp $SRC_DIR/examples/* $PREFIX/examples
-
-  mkdir -p $PREFIX/ext_func/src
-  cp -r $SRC_DIR/ext_func/* $PREFIX/ext_func/
-  cp -r $SRC_DIR/ext_func/src/* $PREFIX/ext_func/src
-
-  mkdir -p $PREFIX/ext_func/pylibs
-  cp -r $SRC_DIR/ext_func/pylibs/* $PREFIX/ext_func/pylibs
-
-  mkdir -p $PREFIX/go
-  cp -r $SRC_DIR/go/* $PREFIX/go
-
-  mkdir -p $PREFIX/ppl/fonts
-  cp $SRC_DIR/ppl/fonts/* $PREFIX/ppl/fonts
-  cp $SRC_DIR/ppl/* $PREFIX/ppl/
+    export CC=clang
+    export CXX=clang++
+    export MACOSX_DEPLOYMENT_TARGET="10.9"
+    export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
+    export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
 fi
+
+export LIBZ_DIR=$PREFIX
+export READLINE_DIR=$PREFIX
+export HDF5_DIR=$PREFIX
+export NETCDF4_DIR=$PREFIX
+export FER_DIR=$PREFIX
+export FC="gfortran"
+export LD_X11="-L/usr/lib64 -lX11"
+
+# Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
+export MAKEFLAGS=""
+
+make >> $BUILD_OUTPUT 2>&1
+# make run_tests  # Image mismatch issues.
+make install >> $BUILD_OUTPUT 2>&1
+
+# Activate pyferret env vars.
+ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
+DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
+mkdir -p $ACTIVATE_DIR
+mkdir -p $DEACTIVATE_DIR
+
+cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/pyferret-activate.sh
+cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pyferret-deactivate.sh
+cp $RECIPE_DIR/scripts/pyferret $PREFIX/bin/pyferret
+ln -s $PREFIX/bin/pyferret $PREFIX/bin/ferret
+
+## END BUILD
+
+# The build finished without returning an error so dump a tail of the output.
+dump_output
+
+# Nicely terminate the ping output loop.
+kill $PING_LOOP_PID
