@@ -2,54 +2,54 @@
 {% set commit = "9caba309e91610d51159b610076886908f4573aa" %}
 
 package:
-    name: pyferret
-    version: {{ version }}.dev
+  name: pyferret
+  version: {{ version }}.dev
 
 source:
-    fn: pyferret-{{ version }}.tar.gz
-    url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ commit }}.tar.gz
-    sha256: e702f4124cfa3fcfa898f5ec6075c548a5b958c70f99f60faa2119f325fe2127
-    patches:
-        - site_specific.patch  # [not win]
-        - linux-platform_specific.patch  # [linux]
-        - osx-platform_specific.patch  # [osx]
+  fn: pyferret-{{ version }}.tar.gz
+  url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ commit }}.tar.gz
+  sha256: e702f4124cfa3fcfa898f5ec6075c548a5b958c70f99f60faa2119f325fe2127
+  patches:
+    - site_specific.patch  # [not win]
+    - linux-platform_specific.patch  # [linux]
+    - osx-platform_specific.patch  # [osx]
 
 build:
-    number: 4
-    skip: True  # [not (unix and py27)]
+  number: 4
+  skip: True  # [not (unix and py27)]
 
 requirements:
-    build:
-        - python
-        - numpy
-        - netcdf-fortran 4.4.*
-        - cairo 1.12.*
-        - pango 1.40.*
-        - gcc  # [not win]
-    run:
-        - python
-        - numpy
-        - netcdf-fortran 4.4.*
-        - cairo 1.12.*
-        - pango 1.40.*
-        - pyqt
-        - libgcc  # [linux]
-        - libgfortran  # [osx]
+  build:
+    - python
+    - numpy
+    - netcdf-fortran 4.4.*
+    - cairo 1.12.*
+    - pango 1.40.*
+    - gcc  # [not win]
+  run:
+    - python
+    - numpy
+    - netcdf-fortran 4.4.*
+    - cairo 1.12.*
+    - pango 1.40.*
+    - pyqt
+    - libgcc  # [linux]
+    - libgfortran  # [osx]
 
 test:
-    imports:
-        - pyferret
-    commands:
-        - conda inspect linkages -n _test pyferret  # [not win]
-        - conda inspect objects -n _test pyferret  # [osx]
+  imports:
+    - pyferret
+  #commands:
+    #- conda inspect linkages -p $PREFIX pyferret  # [not win]
+    #- conda inspect objects -p $PREFIX pyferret  # [osx]
 
 about:
-    home: http://ferret.pmel.noaa.gov/Ferret
-    license: MIT
-    summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
+  home: http://ferret.pmel.noaa.gov/Ferret
+  license: MIT
+  summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
 
 extra:
-    recipe-maintainers:
-        - eugeneburger
-        - karlmsmith
-        - ocefpaf
+  recipe-maintainers:
+    - eugeneburger
+    - karlmsmith
+    - ocefpaf
