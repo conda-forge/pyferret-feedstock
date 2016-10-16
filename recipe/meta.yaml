@@ -15,7 +15,7 @@ source:
     - osx-platform_specific.patch  # [osx]
 
 build:
-  number: 4
+  number: 5
   skip: True  # [not (unix and py27)]
 
 requirements:
@@ -32,7 +32,7 @@ requirements:
     - netcdf-fortran 4.4.*
     - cairo 1.12.*
     - pango 1.40.*
-    - pyqt
+    - pyqt 4.11.*
     - libgcc  # [linux]
     - libgfortran  # [osx]
 
