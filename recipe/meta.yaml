@@ -34,7 +34,7 @@ requirements:
     - cairo 1.14.*
     - pango 1.40.*
     - pixman 0.34.*
-    - pyqt 4.11.*
+    - pyqt 5.6.*
     - libgcc  # [linux]
     - libgfortran  # [osx]
 
@@ -48,6 +48,7 @@ test:
 about:
   home: http://ferret.pmel.noaa.gov/Ferret
   license: MIT
+  license_file: LICENSE
   summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
 
 extra:
