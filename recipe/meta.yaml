@@ -34,7 +34,7 @@ requirements:
     - cairo 1.14.*
     - pango 1.40.*
     - pixman 0.34.*
-    - pyqt 5.6.*
+    - pyqt 4.11.*
     - libgcc  # [linux]
     - libgfortran  # [osx]
 
