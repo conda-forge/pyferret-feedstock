@@ -16,7 +16,7 @@ source:
 
 build:
   number: 6
-  skip: True  # [not (unix and py27)]
+  skip: True  # [win or py3k]
 
 requirements:
   build:
@@ -48,6 +48,7 @@ test:
 about:
   home: http://ferret.pmel.noaa.gov/Ferret
   license: MIT
+  license_file: LICENSE
   summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
 
 extra:
