@@ -6,7 +6,7 @@ diff -Naur PyFerret-7.1.0-final.orig/external_functions/ef_utility/site_specific
  ## Python version used by PyFerret
  ## =========================
 -PYTHON_EXE = python2.6
-+PYTHON_EXE = python$(PY_VER)
++PYTHON_EXE = $PYTHON
  # PYTHON_EXE = python2.7
  # PYTHON_EXE = python3.6
  
