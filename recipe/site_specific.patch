@@ -1,39 +1,29 @@
-diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/external_functions/ef_utility/site_specific.mk PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/external_functions/ef_utility/site_specific.mk
---- external_functions/ef_utility/site_specific.mk	2016-06-29 20:09:51.000000000 -0300
-+++ external_functions/ef_utility/site_specific.mk	2016-07-06 14:34:56.858490288 -0300
-@@ -9,8 +9,7 @@
- ##   intel-mac         for Max OSX
- ## This value is used to determine which platform_specific.mk
- ## file to include in the Makefiles.
--BUILDTYPE = $(HOSTTYPE)
--# BUILDTYPE = x86_64-linux
-+BUILDTYPE = x86_64-linux
- # BUILDTYPE = x86_64-linux-gnu
- # BUILDTYPE = i386-linux
- # BUILDTYPE = i386-linux-gnu
-@@ -27,7 +26,7 @@
- INSTALL_FER_DIR = $(FER_DIR)
- 
- ## Python version used by PyFerret, either python2.6 or python2.7
+diff -Naur PyFerret-7.1.0-final.orig/external_functions/ef_utility/site_specific.mk PyFerret-7.1.0-final/external_functions/ef_utility/site_specific.mk
+--- PyFerret-7.1.0-final.orig/external_functions/ef_utility/site_specific.mk	2017-02-16 16:44:38.000000000 -0200
++++ PyFerret-7.1.0-final/external_functions/ef_utility/site_specific.mk	2017-03-24 17:05:32.430663043 -0300
+@@ -34,7 +34,7 @@
+ ## =========================
+ ## Python version used by PyFerret
+ ## =========================
 -PYTHON_EXE = python2.6
 +PYTHON_EXE = python$(PY_VER)
  # PYTHON_EXE = python2.7
+ # PYTHON_EXE = python3.6
  
- ## FER_LOCAL_EXTFCNS is the directory in which to install
-diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/Makefile PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/Makefile
---- Makefile	2016-06-29 20:09:51.000000000 -0300
-+++ Makefile	2016-07-06 14:19:20.782502751 -0300
-@@ -54,7 +54,8 @@
- 	  export PIXMAN_LIBDIR=$(PIXMAN_LIBDIR) ; \
- 	  export HDF5_LIBDIR=$(HDF5_LIBDIR) ; \
+diff -Naur PyFerret-7.1.0-final.orig/Makefile PyFerret-7.1.0-final/Makefile
+--- PyFerret-7.1.0-final.orig/Makefile	2017-02-16 16:44:38.000000000 -0200
++++ PyFerret-7.1.0-final/Makefile	2017-03-24 17:10:45.842678652 -0300
+@@ -69,7 +69,8 @@
+ 	  export COMPRESS_LIB=$(COMPRESS_LIB) ; \
  	  export NETCDF4_LIBDIR=$(NETCDF4_LIBDIR) ; \
+ 	  export IS_LINUX_SYSTEM=$(IS_LINUX_SYSTEM) ; \
 -	  $(PYTHON_EXE) setup.py --quiet build )
 +	  $(PYTHON_EXE) setup.py --quiet build ; \
 +	  $(PYTHON_EXE) setup.py install )
  
  ## The following installs libpyferret.so and optimized 
  ## versions of all the python scripts into $(DIR_PREFIX)/install.
-@@ -128,7 +129,7 @@
+@@ -152,7 +153,7 @@
  	bin/make_dist_tar . latest local . -y
  	mkdir -p $(INSTALL_FER_DIR)
  	mv -f pyferret-latest-local.tar.gz $(INSTALL_FER_DIR)
@@ -42,10 +32,10 @@ diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/Makefile PyFer
  
  ## The following is for installing the updated threddsBrowser.jar, ferret_ef_meme_subsc.so,
  ## libpyferret.so, and PyFerret python scripts into $(INSTALL_FER_DIR)/lib without having 
-diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/platform_specific.mk.x86_64-linux PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/platform_specific.mk.x86_64-linux
---- platform_specific.mk.x86_64-linux	2016-06-29 20:09:51.000000000 -0300
-+++ platform_specific.mk.x86_64-linux	2016-07-06 14:19:38.718502512 -0300
-@@ -17,10 +17,9 @@
+diff -Naur PyFerret-7.1.0-final.orig/platform_specific.mk.x86_64-linux PyFerret-7.1.0-final/platform_specific.mk.x86_64-linux
+--- PyFerret-7.1.0-final.orig/platform_specific.mk.x86_64-linux	2017-02-16 16:44:38.000000000 -0200
++++ PyFerret-7.1.0-final/platform_specific.mk.x86_64-linux	2017-03-24 17:17:56.486700100 -0300
+@@ -20,10 +20,9 @@
  ifeq ($(strip $(CAIRO_DIR)),)
  	CAIRO_LIBDIR	=
  #	This include is only for code in Pango that did use the proper cairo include
@@ -58,7 +48,7 @@ diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/platform_speci
  #	The second include is only for code in Pango that did use the proper cairo include
  	CAIRO_INCLUDE	= -I$(CAIRO_DIR)/include -I$(CAIRO_DIR)/include/cairo
  endif
-@@ -29,20 +28,17 @@
+@@ -32,15 +31,13 @@
  	PIXMAN_LIBDIR	=
  	PIXMAN_INCLUDE	= 
  else
@@ -68,6 +58,15 @@ diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/platform_speci
  	PIXMAN_INCLUDE	= -I$(PIXMAN_DIR)/include
  endif
  
+ ifeq ($(strip $(PANGO_DIR)),)
+ 	PANGO_LIBDIR	=
+-#	PANGO_INCLUDE	= -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-	PANGO_INCLUDE	= -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
++	PANGO_INCLUDE	= -I$(PREFIX)/include/pango-1.0 -I$(PREFIX)/include/glib-2.0 -I$(PREFIX)/lib/glib-2.0/include
+ else
+ #	PANGO_LIBDIR	= $(PANGO_DIR)/lib
+ #	PANGO_INCLUDE	= -I$(PANGO_DIR)/include/pango-1.0 -I$(PANGO_DIR)/include/glib-2.0 -I$(PANGO_DIR)/lib/glib-2.0/include
+@@ -51,12 +48,10 @@
  ifeq ($(strip $(HDF5_DIR)),)
  	HDF5_LIBDIR	=
  else
@@ -82,105 +81,97 @@ diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/platform_speci
  
  #
  # Local defines
-@@ -59,9 +55,9 @@
- 			  -I$(DIR_PREFIX)/external_functions/ef_utility \
- 			  $(CAIRO_INCLUDE) \
- 			  $(PIXMAN_INCLUDE) \
--			  -I/usr/include/pango-1.0 \
--			  -I/usr/include/glib-2.0 \
--			  -I/usr/lib64/glib-2.0/include \
-+			  -I$(PREFIX)/include/pango-1.0 \
-+			  -I$(PREFIX)/include/glib-2.0 \
-+			  -I$(PREFIX)/lib/glib-2.0/include \
- 			  -I$(NETCDF4_DIR)/include
- 
- 	MYDEFINES	= -Dcrptd_cat_argument \
-diff -Naur PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387.orig/site_specific.mk PyFerret-67aed0fa29f2d3f28e624030d746d23d146fc387/site_specific.mk
---- site_specific.mk	2016-06-29 20:09:51.000000000 -0300
-+++ site_specific.mk	2016-07-06 14:42:47.234484026 -0300
-@@ -3,7 +3,7 @@
- 
+diff -Naur PyFerret-7.1.0-final.orig/site_specific.mk PyFerret-7.1.0-final/site_specific.mk
+--- PyFerret-7.1.0-final.orig/site_specific.mk	2017-02-16 16:44:38.000000000 -0200
++++ PyFerret-7.1.0-final/site_specific.mk	2017-03-24 17:21:37.915711128 -0300
+@@ -5,7 +5,7 @@
  ## Full path name of the directory containing this file (the ferret root directory).
  ## Do not use $(shell pwd) since this is included in Makefiles in other directories.
+ ## =========================
 -DIR_PREFIX = $(HOME)/build/pyferret_dev
 +DIR_PREFIX = $(SRC_DIR)
+ # DIR_PREFIX = $(HOME)/git/PyFerret
  # DIR_PREFIX = $(HOME)/pyferret_dev
  
- ## Machine type for which to build Ferret/PyFerret
-@@ -12,15 +12,15 @@
- ##   i386-linux        for 32-bit RHEL
- ##   i386-linux-gnu    for 32-bit Ubuntu and many "free" Linux systems
- ##   intel-mac         for Mac OSX
--BUILDTYPE = $(HOSTTYPE)
--# BUILDTYPE = x86_64-linux
-+# BUILDTYPE = $(HOSTTYPE)
-+BUILDTYPE = x86_64-linux
- # BUILDTYPE = x86_64-linux-gnu
- # BUILDTYPE = i386-linux
- # BUILDTYPE = i386-linux-gnu
- # BUILDTYPE = intel-mac
- 
- ## Python 2.x executable to invoke for build and install.
--PYTHON_EXE = python2.6
-+PYTHON_EXE = python$(PY_VER)
- # PYTHON_EXE = python2.7
- ## The assignment of PYTHONINCDIR should not need any modifications
- PYTHONINCDIR := $(shell $(PYTHON_EXE) -c "import distutils.sysconfig; print distutils.sysconfig.get_python_inc()")
-@@ -28,39 +28,31 @@
- ## Installation directory for built Ferret.  Using the "install"
- ## Makefile target circumvents the need to create the fer_*.tar.gz
- ## files just for creating a Ferret installation.
+@@ -14,9 +14,9 @@
+ ## Makefile target automatically creates a generic pyferret-*.tar.gz
+ ## file and then extracts it to create a PyFerret installation.
+ ## =========================
 -INSTALL_FER_DIR = $(HOME)/ferret_distributions/rhel6_64
++# INSTALL_FER_DIR = $(HOME)/ferret_distributions/rhel6_64
+ # INSTALL_FER_DIR = $(HOME)/PyFerret
 -# INSTALL_FER_DIR = $(FER_DIR)
 +INSTALL_FER_DIR = $(FER_DIR)
  
- ## Installation directory for cairo v1.12 or later static library 
- ## (contains include and lib or lib64 subdirectories).  If blank,
- ## the system's cairo shared library will be used.  Older versions 
- ## of cairo (v1.8 or later) can be used, but raster images from 
+ ## =========================
+ ## Machine type for which to build Ferret/PyFerret
+@@ -36,7 +36,7 @@
+ ## =========================
+ ## Python executable to invoke for build and install.
+ ## =========================
+-PYTHON_EXE = python2.6
++PYTHON_EXE = python$(PY_VER)
+ # PYTHON_EXE = python2.7
+ # PYTHON_EXE = python3.6
+ 
+@@ -52,10 +52,10 @@
+ ## of cairo (v1.8 or later) can be used, but raster images from
  ## -nodisplay may look a little fuzzy unless -gif is specified.
+ ## =========================
 -CAIRO_DIR = /usr/local/cairo-1.14.4
--# CAIRO_DIR = /usr/local
++# CAIRO_DIR = /usr/local/cairo-1.14.4
+ # CAIRO_DIR = $(HOME)/.local
+ # CAIRO_DIR = /usr/local
 -# CAIRO_DIR =
 +CAIRO_DIR =
  
- ## Installation directory for pixman-1 static library (contains 
- ## include and lib or lib64 subdirectories) used by the above cairo 
- ## library.  If blank, or if CAIRO_DIR is blank, the system's 
+ ## =========================
+ ## Installation directory for pixman-1 static library (contains
+@@ -63,11 +63,11 @@
+ ## cairo library.  If blank, or if CAIRO_DIR is blank, the system's
  ## pixman-1 shared library will be used.
+ ## =========================
 -PIXMAN_DIR = /usr/local/cairo-1.14.4
--# PIXMAN_DIR = /usr/local
++# PIXMAN_DIR = /usr/local/cairo-1.14.4
+ # PIXMAN_DIR = /usr/local/pixman-1-0.34.0
+ # PIXMAN_DIR = $(HOME)/.local
+ # PIXMAN_DIR = /usr/local
 -# PIXMAN_DIR =
 +PIXMAN_DIR =
  
- ## Installation directory for HDF5 static libraries (contains 
- ## include and lib or lib64 subdirectories).  Do not give a location 
- ## to link to NetCDF shared-object libraries.
+ ## =========================
+ ## Directory containing the pango-1.0, glib-2.0, freetype, fontconfig,
+@@ -84,10 +84,10 @@
+ ## and lib or lib64 subdirectories).  To link to NetCDF shared-object 
+ ## libraries, do not give a location for HDF5_DIR.
+ ## =========================
 -HDF5_DIR = /usr/local/hdf5-1.8.16
--# HDF5_DIR = /usr/local
--# HDF5_DIR = 
-+HDF5_DIR = 
++# HDF5_DIR = /usr/local/hdf5-1.8.16
+ # HDF5_DIR = $(HOME)/.local
+ # HDF5_DIR = /usr/local
+-# HDF5_DIR =
++HDF5_DIR =
  
- ## Installation directory for NetCDF static or shared object libraries
- ## (contains include and lib or lib64 subdirectories).  If HDF5_DIR 
- ## (above) is blank, the netcdf shared-object (.so) libraries will be 
+ ## =========================
+ ## Compression library used in the above HDF5 library, either 'z'
+@@ -102,9 +102,10 @@
+ ## (above) is blank, the netcdf shared-object (.so) libraries will be
  ## used;  otherwise the netcdf static (.a) libraries will be used.
+ ## =========================
 -NETCDF4_DIR = /usr/local/netcdf-4.4.0
--# NETCDF4_DIR = /usr/local
++# NETCDF4_DIR = /usr/local/netcdf-4.4.0
+ # NETCDF4_DIR = $(HOME)/.local
+ # NETCDF4_DIR = /usr/local
 +NETCDF4_DIR = $(PREFIX)
  
+ ## =========================
  ## Java home directory - this may be predefined
- ## from your shell environment.  If JAVA_HOME is defined,
-@@ -68,11 +60,6 @@
- ## called to build threddsBrowser.jar; otherwise, 
- ## threddsBrowser.jar is not built and the Ferret command
- ## SET DATA /BROWSE (or the alias OPEN) will not work.
--# JAVA_HOME = /usr/java/default
--# JAVA_HOME = /usr/java/latest
--# JAVA_HOME = /usr/lib/jvm/default-java
--# JAVA_HOME = /usr/lib/jvm/java-oracle
+@@ -118,7 +119,7 @@
+ # JAVA_HOME = /usr/java/latest
+ # JAVA_HOME = /usr/lib/jvm/default-java
+ # JAVA_HOME = /usr/lib/jvm/java-oracle
 -JAVA_HOME = /usr/lib/jvm/java
--# JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
 +JAVA_HOME = 
+ # JAVA_HOME = /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home
  
  ##

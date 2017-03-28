@@ -26,6 +26,8 @@ bash -c "while true; do echo \$(date) - building ...; sleep $PING_SLEEP; done" &
 PING_LOOP_PID=$!
 
 ## START BUILD
+export HOSTTYPE="x86_64-linux"
+
 if [ $(uname) == Darwin ]; then
     export CC=clang
     export CXX=clang++
