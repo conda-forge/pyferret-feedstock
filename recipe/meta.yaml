@@ -1,40 +1,41 @@
-{% set version = "7.1.0" %}
+{% set version = "7.2.1" %}
 
 package:
   name: pyferret
   version: {{ version }}
 
 source:
-  fn: pyferret-{{ version }}.tar.gz
   url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}-final.tar.gz
-  sha256: a3c2823068d2b20d69233f7d93653ecf10ff006e4663a8d3a8441db644cbe4c6
+  sha256: c285455d7efebf33d7cb55eb0480d18efa580e51b6bca082c150cdf0ea9aa6ab
   patches:
-    - site_specific.patch  # [not win]
-    - linux-platform_specific.patch  # [linux]
-    - osx-platform_specific.patch  # [osx]
+    - platform_specific.mk.x86_64-linux.patch
+    - sp_dir.patch
 
 build:
-  number: 1
-  skip: True  # [win or py3k]
+  number: 0
+  skip: True  # [win or osx]
 
 requirements:
   build:
     - python
-    - numpy
+    - numpy 1.9.*
     - netcdf-fortran 4.4.*
     - cairo 1.14.*
     - pango 1.40.*
     - pixman 0.34.*
+    - scipy
+    - pyshp
     - gcc  # [not win]
   run:
     - python
-    - numpy
+    - numpy >=1.8
     - netcdf-fortran 4.4.*
     - cairo 1.14.*
     - pango 1.40.*
     - pixman 0.34.*
-    - pyqt 5.6.*  # [not osx]
-    - pyqt 4.11.*  # [osx]
+    - scipy
+    - pyshp
+    - pyqt 5.6.*
     - libgcc  # [linux]
     - libgfortran  # [osx]
 
@@ -42,8 +43,8 @@ test:
   imports:
     - pyferret
   commands:
-    - conda inspect linkages -p $PREFIX pyferret  # [not win]
-    - conda inspect objects -p $PREFIX pyferret  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://ferret.pmel.noaa.gov/Ferret

@@ -1,0 +1,22 @@
+--- PyFerret-7.2.1-final.orig/external_functions/ef_utility/platform_specific.mk.x86_64-linux	2017-09-06 19:54:40.000000000 -0300
++++ PyFerret-7.2.1-final/external_functions/ef_utility/platform_specific.mk.x86_64-linux	2017-09-24 12:04:17.339765316 -0300
+@@ -18,17 +18,15 @@
+ FFLAGS		= -fPIC -m64 -Ddouble_p -fno-second-underscore \
+ 		  -fno-backslash -fdollar-ok -ffixed-line-length-132 \
+ 		  -fdefault-real-8 -fdefault-double-8 -O $(INCLUDES)
+-FFLAGS_DEBUG	= -O0 -g -fbounds-check 
++FFLAGS_DEBUG	= -O0 -g -fbounds-check
+ 
+ LD		= gfortran
+ LD_DYN_FLAGS	= -fPIC -m64 -shared -Wl,--no-undefined
+ SYSLIBS		= ../ef_utility/copy_ferret_ef_mem_subsc.o \
+-		  -L$(INSTALL_FER_DIR)/lib64/$(PYTHON_EXE)/site-packages/pyferret \
+-		  -L$(INSTALL_FER_DIR)/lib/$(PYTHON_EXE)/site-packages/pyferret \
++		  -L$(SP_DIR)/pyferret \
+ 		  -lpyferret
+ 
+ # Directly compile the .F source files to the .o object files
+ # since gfortran can handle the C compiler directives in Fortran code
+ %.o : %.F
+ 	$(FC) $(FFLAGS) -c $*.F -o $*.o
+-

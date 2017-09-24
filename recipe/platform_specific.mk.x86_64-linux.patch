@@ -1,0 +1,58 @@
+--- PyFerret-7.2.1-final.orig/platform_specific.mk.x86_64-linux	2017-09-06 19:54:40.000000000 -0300
++++ PyFerret-7.2.1-final/platform_specific.mk.x86_64-linux	2017-09-23 20:45:04.093967504 -0300
+@@ -23,27 +23,27 @@
+ ifeq ($(strip $(CAIRO_DIR)),)
+ 	CAIRO_LIBDIR	=
+ #	This include is only for code in Pango that did use the proper cairo include
+-	CAIRO_INCLUDE	= -I/usr/include/cairo
++	CAIRO_INCLUDE	= -I$(PREFIX)/include -I$(PREFIX)/include/cairo
+ else
+ #	CAIRO_LIBDIR	= $(CAIRO_DIR)/lib
+-	CAIRO_LIBDIR	= $(CAIRO_DIR)/lib64
++	CAIRO_LIBDIR	= $(CAIRO_DIR)/lib
+ #	The second include is only for code in Pango that did use the proper cairo include
+ 	CAIRO_INCLUDE	= -I$(CAIRO_DIR)/include -I$(CAIRO_DIR)/include/cairo
+ endif
+ 
+ ifeq ($(strip $(PIXMAN_DIR)),)
+ 	PIXMAN_LIBDIR	=
+-	PIXMAN_INCLUDE	= 
++	PIXMAN_INCLUDE	=
+ else
+ #	PIXMAN_LIBDIR	= $(PIXMAN_DIR)/lib
+-	PIXMAN_LIBDIR	= $(PIXMAN_DIR)/lib64
++	PIXMAN_LIBDIR	= $(PIXMAN_DIR)/lib
+ 	PIXMAN_INCLUDE	= -I$(PIXMAN_DIR)/include
+ endif
+ 
+ ifeq ($(strip $(PANGO_DIR)),)
+ 	PANGO_LIBDIR	=
+ #	PANGO_INCLUDE	= -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-	PANGO_INCLUDE	= -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
++	PANGO_INCLUDE	= -I$(PREFIX)/include/pango-1.0 -I$(PREFIX)/include/glib-2.0 -I$(PREFIX)/lib/glib-2.0/include
+ else
+ #	PANGO_LIBDIR	= $(PANGO_DIR)/lib
+ #	PANGO_INCLUDE	= -I$(PANGO_DIR)/include/pango-1.0 -I$(PANGO_DIR)/include/glib-2.0 -I$(PANGO_DIR)/lib/glib-2.0/include
+@@ -55,11 +55,11 @@
+ 	HDF5_LIBDIR	=
+ else
+ #	HDF5_LIBDIR	= $(HDF5_DIR)/lib
+-	HDF5_LIBDIR	= $(HDF5_DIR)/lib64
++	HDF5_LIBDIR	= $(HDF5_DIR)/lib
+ endif
+ 
+ #	NETCDF4_LIBDIR	= $(NETCDF4_DIR)/lib
+-	NETCDF4_LIBDIR	= $(NETCDF4_DIR)/lib64
++	NETCDF4_LIBDIR	= $(NETCDF4_DIR)/lib
+ 
+ #
+ # Local defines
+@@ -107,7 +107,7 @@
+ 	ARFLAGS		= -cr
+ 	RANLIB		= $(shell which ranlib)
+ 
+-	CFLAGS		= -m64 -fPIC $(MYDEFINES) $(MYINCLUDES) 
++	CFLAGS		= -m64 -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+ 	FFLAGS		= -m64 -fPIC \
+ 			  -fno-automatic \
