@@ -38,9 +38,9 @@ fi
 # Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
 export MAKEFLAGS=""
 
-make
+make -j$CPU_COUNT
 # make run_tests  # Image mismatch issues.
-make install
+make install -j$CPU_COUNT
 
 # Activate pyferret env vars.
 ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
