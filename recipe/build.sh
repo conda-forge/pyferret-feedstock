@@ -15,7 +15,7 @@ export PANGO_LIBDIR="$PREFIX/lib"
 export GLIB2_LIBDIR="$PREFIX/lib"
 export HDF5_LIBDIR=""
 export SZ_LIBDIR=""
-export NETCDF4_LIBDIR="$PREFIX/lib"
+export NETCDF_LIBDIR="$PREFIX/lib"
 export FER_DIR="$PREFIX"
 export INSTALL_FER_DIR="$PREFIX"
 
