@@ -14,29 +14,29 @@ source:
     - osx-platform_specific.patch  # [osx]
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win or py3k]
 
 requirements:
   build:
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+  host:
     - python
     - numpy
-    - netcdf-fortran 4.4.*
-    - cairo 1.14.*
-    - pango 1.40.*
-    - pixman 0.34.*
-    - gcc  # [not win]
+    - netcdf-fortran
+    - cairo
+    - pango
+    - pixman
   run:
     - python
     - numpy
-    - netcdf-fortran 4.4.*
-    - cairo 1.14.*
-    - pango 1.40.*
-    - pixman 0.34.*
-    - pyqt 5.6.*  # [not osx]
-    - pyqt 4.11.*  # [osx]
-    - libgcc  # [linux]
-    - libgfortran  # [osx]
+    - netcdf-fortran
+    - cairo
+    - pango
+    - pixman
+    - pyqt        # [not osx]
+    - pyqt         # [osx]
 
 test:
   imports:
