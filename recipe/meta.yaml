@@ -1,20 +1,15 @@
-{% set version = "7.1.0" %}
+{% set version = "7.4.2" %}
 
 package:
   name: pyferret
   version: {{ version }}
 
 source:
-  fn: pyferret-{{ version }}.tar.gz
-  url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}-final.tar.gz
-  sha256: a3c2823068d2b20d69233f7d93653ecf10ff006e4663a8d3a8441db644cbe4c6
-  patches:
-    - site_specific.patch  # [not win]
-    - linux-platform_specific.patch  # [linux]
-    - osx-platform_specific.patch  # [osx]
+  url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ version }}.tar.gz
+  sha256: de5359f77e19d4b82e84b35b0092cdeab3eadf3166301187979c8cec45d4e55c
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win or py3k]
 
 requirements:
@@ -35,8 +30,7 @@ requirements:
     - cairo
     - pango
     - pixman
-    - pyqt        # [not osx]
-    - pyqt         # [osx]
+    - pyqt
 
 test:
   imports:
