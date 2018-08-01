@@ -2,6 +2,8 @@
 
 export _CONDA_SET_FERRET=1
 
+export FER_DIR="$CONDA_PREFIX"
+
 ## Dataset directory (not packaged yet).
 export FER_DSETS="$CONDA_PREFIX/share/fer_dsets"
 
