@@ -1,8 +1,24 @@
+cairo:
+- '1.14'
+netcdf_fortran:
+- '4.4'
 numpy:
 - '1.9'
+pango:
+- '1.40'
 pin_run_as_build:
-  python:
+  cairo:
     max_pin: x.x
+  netcdf-fortran:
+    max_pin: x.x
+  pango:
+    max_pin: x.x
+  pixman:
+    max_pin: x.x
+  python:
     min_pin: x.x
+    max_pin: x.x
+pixman:
+- '0.34'
 python:
 - '2.7'
