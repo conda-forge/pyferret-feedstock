@@ -28,37 +28,46 @@ PING_LOOP_PID=$!
 ## START BUILD
 
 if [ $(uname) == Darwin ]; then
-    export CC=clang
-    export CXX=clang++
+    export CC="clang"
+    export CXX="clang++"
+    export FC="gfortran"
     export MACOSX_DEPLOYMENT_TARGET="10.9"
     export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
     export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
-    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
+    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
     export HOSTTYPE="intel-mac"
+    export FER_DIR="$PREFIX"
     export BUILDTYPE="intel-mac"
-    export GFORTRAN_LIB=`$(FC) --print-file-name=libgfortran.dylib`
+    export GFORTRAN_LIB=`$FC --print-file-name=libgfortran.dylib`
 else
+    export FC="gfortran"
     export HOSTTYPE="x86_64-linux"
+    export FER_DIR="$PREFIX"
     export BUILDTYPE="x86_64-linux"
     export GFORTRAN_LIB=""
 fi
 
-# blank site_specific.mk files - just define environment here
-touch site_specific.mk
-touch external_functions/ef_utility/site_specific.mk
-export DIR_PREFIX="$SRC_DIR"
-export PYTHON_EXE="python$(PY_VER)"
 export PYTHONINCDIR=`$PYTHON -c "from __future__ import print_function ; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
-export FC="gfortran"
-export CAIRO_LIBDIR="$PREFIX/lib"
-export PIXMAN_LIBDIR="$PREFIX/lib"
-export PANGO_LIBDIR="$PREFIX/lib"
-export GLIB2_LIBDIR="$PREFIX/lib"
-export HDF5_LIBDIR=""
-export SZ_LIBDIR=""
-export NETCDF_LIBDIR="$PREFIX/lib"
-export FER_DIR="$PREFIX"
-export INSTALL_FER_DIR="$PREFIX"
+
+rm -f site_specific.mk
+echo "DIR_PREFIX = $SRC_DIR" > site_specific.mk
+echo "INSTALL_FER_DIR = $PREFIX" >> site_specific.mk
+echo "BUILDTYPE = $BUILDTYPE" >> site_specific.mk
+echo "PYTHON_EXE = python$PY_VER" >> site_specific.mk
+echo "PYTHONINCDIR = $PYTHONINCDIR" >> site_specific.mk
+echo "GFORTRAN_LIB = $GFORTRAN_LIB" >> site_specific.mk
+echo "CAIRO_LIBDIR = $PREFIX/lib" >> site_specific.mk
+echo "PIXMAN_LIBDIR = $PREFIX/lib" >> site_specific.mk
+echo "PANGO_LIBDIR = $PREFIX/lib" >> site_specific.mk
+echo "GLIB2_LIBDIR = $PREFIX/lib" >> site_specific.mk
+echo "NETCDF_LIBDIR = $PREFIX/lib" >> site_specific.mk
+
+rm -f external_functions/ef_utility/site_specific.mk
+echo "BUILDTYPE = $BUILDTYPE" > external_functions/ef_utility/site_specific.mk
+echo "PYTHON_EXE = python$PY_VER" >> external_functions/ef_utility/site_specific.mk
+## single quotes on these two so it wil be exactly as shown
+echo 'INSTALL_FER_DIR = $(FER_DIR)' >> external_functions/ef_utility/site_specific.mk
+echo 'FER_LOCAL_EXTFCNS = $(INSTALL_FER_DIR)/ext_func/pylibs' >> external_functions/ef_utility/site_specific.mk
 
 # Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
 export MAKEFLAGS=""
