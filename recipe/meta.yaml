@@ -5,6 +5,7 @@ package:
   version: {{ version }}
 
 source:
+  fn: pyferret-{{ version }}.tar.gz
   url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ version }}.tar.gz
   sha256: de5359f77e19d4b82e84b35b0092cdeab3eadf3166301187979c8cec45d4e55c
 
@@ -14,23 +15,24 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
-  host:
     - python
     - numpy
-    - netcdf-fortran
-    - cairo
-    - pango
-    - pixman
+    - netcdf-fortran 4.4.*
+    - cairo 1.14.*
+    - pango 1.40.*
+    - pixman 0.34.*
+    - gcc  # [not win]
   run:
     - python
     - numpy
-    - netcdf-fortran
-    - cairo
-    - pango
-    - pixman
-    - pyqt
+    - netcdf-fortran 4.4.*
+    - cairo 1.14.*
+    - pango 1.40.*
+    - pixman 0.34.*
+    - pyqt 5.6.*  # [not osx]
+    - pyqt 4.11.*  # [osx]
+    - libgcc  # [linux]
+    - libgfortran  # [osx]
 
 test:
   imports:
