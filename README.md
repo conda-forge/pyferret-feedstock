@@ -14,7 +14,8 @@ Summary: An Analysis Tool for Gridded and Non-Gridded Data.
 Current build status
 ====================
 
-[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/pyferret-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/pyferret-feedstock)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/pyferret-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/pyferret-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/pyferret-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pyferret-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
