@@ -1,5 +1,9 @@
+c_compiler:
+- toolchain_c
 cairo:
 - '1.14'
+fortran_compiler:
+- toolchain_fort
 netcdf_fortran:
 - '4.4'
 numpy:
