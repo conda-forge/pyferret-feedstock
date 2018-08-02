@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ $(uname) == Darwin ]; then
+    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
