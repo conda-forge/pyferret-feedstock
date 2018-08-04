@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ $(uname) == Darwin ]; then
+    export FFLAGS="-static -ff2c -arch x86_64 ${FFLAGS}"
     export FC="gfortran"
     export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
     export HOSTTYPE="intel-mac"
