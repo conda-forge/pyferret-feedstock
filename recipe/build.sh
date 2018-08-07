@@ -1,9 +1,7 @@
 #!/bin/bash
 
 if [ $(uname) == Darwin ]; then
-    export FFLAGS="--static-libgfortran ${FFLAGS}"
     export FC="gfortran"
-    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
@@ -34,7 +32,7 @@ echo "NETCDF_LIBDIR = $PREFIX/lib" >> site_specific.mk
 rm -f external_functions/ef_utility/site_specific.mk
 echo "BUILDTYPE = $BUILDTYPE" > external_functions/ef_utility/site_specific.mk
 echo "PYTHON_EXE = python$PY_VER" >> external_functions/ef_utility/site_specific.mk
-## single quotes on these two so it wil be exactly as shown
+## single quotes on these two so they will be exactly as shown
 echo 'INSTALL_FER_DIR = $(FER_DIR)' >> external_functions/ef_utility/site_specific.mk
 echo 'FER_LOCAL_EXTFCNS = $(INSTALL_FER_DIR)/ext_func/pylibs' >> external_functions/ef_utility/site_specific.mk
 
