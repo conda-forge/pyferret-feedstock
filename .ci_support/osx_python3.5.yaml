@@ -31,4 +31,4 @@ pin_run_as_build:
 pixman:
 - '0.34'
 python:
-- '2.7'
+- '3.5'

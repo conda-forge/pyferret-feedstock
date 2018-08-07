@@ -10,18 +10,20 @@ source:
   sha256: de5359f77e19d4b82e84b35b0092cdeab3eadf3166301187979c8cec45d4e55c
 
 build:
-  number: 1
-  skip: True  # [win or py3k]
+  number: 2
+  skip: True  # [win]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+  host:
     - python
     - numpy
     - netcdf-fortran
     - cairo
     - pango
     - pixman
-    - gcc  # [not win]
   run:
     - python
     - numpy
@@ -30,15 +32,10 @@ requirements:
     - pango
     - pixman
     - pyqt
-    - libgcc  # [linux]
-    - libgfortran  # [osx]
 
 test:
   imports:
     - pyferret
-  commands:
-    - conda inspect linkages -p $PREFIX pyferret  # [not win]
-    - conda inspect objects -p $PREFIX pyferret  # [osx]
 
 about:
   home: http://ferret.pmel.noaa.gov/Ferret
