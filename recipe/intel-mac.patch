@@ -1,0 +1,13 @@
+diff --git a/platform_specific.mk.intel-mac b/platform_specific.mk.intel-mac
+index ea28d4f..c1e260b 100644
+--- a/platform_specific.mk.intel-mac
++++ b/platform_specific.mk.intel-mac
+@@ -96,7 +96,7 @@ endif
+ 
+ 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+-	FFLAGS		= -fPIC \
++	FFLAGS		= -fPIC -static-libgfortran \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
