@@ -39,8 +39,6 @@ echo 'FER_LOCAL_EXTFCNS = $(INSTALL_FER_DIR)/ext_func/pylibs' >> external_functi
 # Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
 export MAKEFLAGS=""
 
-patch -p 1 platform_specific.mk.intel-mac intel-mac.patch
-
 make
 # make run_tests  # Image mismatch issues.
 make install
