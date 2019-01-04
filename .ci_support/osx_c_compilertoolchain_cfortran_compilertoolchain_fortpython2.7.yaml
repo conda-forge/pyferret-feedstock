@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
+build_number_decrement:
+- '1000'
 c_compiler:
 - toolchain_c
 cairo:
@@ -35,4 +37,10 @@ pin_run_as_build:
 pixman:
 - '0.34'
 python:
-- '3.6'
+- '2.7'
+zip_keys:
+- - c_compiler
+  - fortran_compiler
+  - channel_sources
+  - channel_targets
+  - build_number_decrement

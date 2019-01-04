@@ -1,15 +1,17 @@
+build_number_decrement:
+- '0'
 c_compiler:
-- toolchain_c
+- gcc
 cairo:
 - '1.14'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
+- conda-forge gcc7
 docker_image:
-- condaforge/linux-anvil
+- condaforge/linux-anvil-comp7
 fortran_compiler:
-- toolchain_fort
+- gfortran
 netcdf_fortran:
 - '4.4'
 numpy:
@@ -32,3 +34,10 @@ pixman:
 - '0.34'
 python:
 - '2.7'
+zip_keys:
+- - c_compiler
+  - fortran_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
