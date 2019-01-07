@@ -1,13 +1,11 @@
 #!/bin/bash
 
 if [ $(uname) == Darwin ]; then
-    export FC="gfortran"
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
     export GFORTRAN_LIB=`$FC --print-file-name=libgfortran.dylib`
 elif [[ $(uname) == Linux ]]; then
-    export FC="gfortran"
     export HOSTTYPE="x86_64-linux"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
