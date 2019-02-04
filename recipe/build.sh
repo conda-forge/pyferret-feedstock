@@ -10,8 +10,8 @@ elif [[ $(uname) == Linux ]]; then
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
     export GFORTRAN_LIB=""
-    export CFLAGS="$CFLAGS -Wno-error=strict-aliasing"
-    export CXXFLAGS="$CXXFLAGS -Wno-error=strict-aliasing"
+    export CFLAGS="$CFLAGS -Wno-strict-aliasing"
+    export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
 fi
 
 export PYTHONINCDIR=`$PYTHON -c "from __future__ import print_function ; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
