@@ -1,17 +1,17 @@
 #!/bin/bash
 
 if [ $(uname) == Darwin ]; then
-    export FC="gfortran"
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
     export GFORTRAN_LIB=`$FC --print-file-name=libgfortran.dylib`
 elif [[ $(uname) == Linux ]]; then
-    export FC="gfortran"
     export HOSTTYPE="x86_64-linux"
     export FER_DIR="$PREFIX"
     export BUILDTYPE="$HOSTTYPE"
     export GFORTRAN_LIB=""
+    export CFLAGS="$CFLAGS -Wno-strict-aliasing"
+    export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
 fi
 
 export PYTHONINCDIR=`$PYTHON -c "from __future__ import print_function ; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
@@ -39,7 +39,7 @@ echo 'FER_LOCAL_EXTFCNS = $(INSTALL_FER_DIR)/ext_func/pylibs' >> external_functi
 # Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
 export MAKEFLAGS=""
 
-make
+make FC=$FC CC=$CC F77=$F77 AR=$AR RANLIB=$RANLIB
 # make run_tests  # Image mismatch issues.
 make install
 
