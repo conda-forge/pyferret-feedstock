@@ -6,7 +6,7 @@ package:
 
 source:
   fn: pyferret-{{ version }}.tar.gz
-  url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ version }}.tar.gz
+  url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}.tar.gz
   sha256: 5e18051e6e68374445a3bdd08fff278f50f03d94f32d6f7960afcd587266216b
   patches:
     - intel-mac.patch  # [osx]
