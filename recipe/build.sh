@@ -39,8 +39,7 @@ echo 'FER_LOCAL_EXTFCNS = $(INSTALL_FER_DIR)/ext_func/pylibs' >> external_functi
 # Set in conda_forge_build_setup to `${MAKEFLAGS}` and that breaks the build here.
 export MAKEFLAGS=""
 
-make FC=$FC CC=$CC F77=$F77 AR=$AR RANLIB=$RANLIB
-# make run_tests  # Image mismatch issues.
+make FC=$FC CC=$CC LD=$FC
 make install
 
 # Activate pyferret env vars.
