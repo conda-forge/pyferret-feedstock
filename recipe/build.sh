@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export CFLAGS=$(echo "${CFLAGS}" | sed "s/-O2/-O/g")
+
 if [ $(uname) == Darwin ]; then
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
