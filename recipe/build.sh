@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export CFLAGS=$(echo "${CFLAGS}" | sed "s/-O2/-O/g")
-
 if [ $(uname) == Darwin ]; then
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
@@ -15,6 +13,10 @@ elif [[ $(uname) == Linux ]]; then
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
 fi
+
+export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
+export CFLAGS=$(echo "${CFLAGS}" | sed "s/-O2/-O1/g")
+export CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-O2/-O1/g")
 
 export PYTHONINCDIR=`$PYTHON -c "from __future__ import print_function ; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
 
