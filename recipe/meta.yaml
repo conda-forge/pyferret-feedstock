@@ -1,13 +1,12 @@
-{% set version = "7.4.3" %}
+{% set version = "7.5.0" %}
 
 package:
   name: pyferret
   version: {{ version }}
 
 source:
-  fn: pyferret-{{ version }}.tar.gz
-  url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ version }}.tar.gz
-  sha256: 27442cc6baceb0a0b3c583c1622cd6f62a96c3fc8666a882c60d2c80f932ffbf
+  url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}.tar.gz
+  sha256: 5e18051e6e68374445a3bdd08fff278f50f03d94f32d6f7960afcd587266216b
   patches:
     - intel-mac.patch  # [osx]
 
