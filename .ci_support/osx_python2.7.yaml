@@ -21,7 +21,7 @@ macos_min_version:
 netcdf_fortran:
 - '4.4'
 numpy:
-- '1.9'
+- '1.14'
 pango:
 - '1.40'
 pin_run_as_build:
@@ -37,6 +37,6 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 pixman:
-- '0.34'
+- '0.38'
 python:
 - '2.7'
