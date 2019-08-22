@@ -53,6 +53,8 @@ mkdir -p $ACTIVATE_DIR
 mkdir -p $DEACTIVATE_DIR
 
 cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/pyferret-activate.sh
+cp $RECIPE_DIR/scripts/activate.csh $ACTIVATE_DIR/pyferret-activate.csh
 cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pyferret-deactivate.sh
+cp $RECIPE_DIR/scripts/deactivate.csh $DEACTIVATE_DIR/pyferret-deactivate.csh
 cp $RECIPE_DIR/scripts/pyferret $PREFIX/bin/pyferret
 ln -s $PREFIX/bin/pyferret $PREFIX/bin/ferret
