@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [[ -n "$_CONDA_SET_FERRET" ]]; then
+  unset _CONDA_SET_FERRET
   unset FER_DIR
   unset FER_DSETS
   unset FER_DATA
