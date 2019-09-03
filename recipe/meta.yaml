@@ -22,7 +22,7 @@ requirements:
     - python
     - numpy
     - netcdf-fortran
-    - netcdf
+    - libnetcdf
     - cairo
     - pango
     - pixman
@@ -30,7 +30,7 @@ requirements:
     - python
     - numpy
     - netcdf-fortran
-    - netcdf
+    - libnetcdf
     - cairo
     - pango
     - pixman
