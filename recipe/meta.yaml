@@ -11,7 +11,7 @@ source:
     - intel-mac.patch  # [osx]
 
 build:
-  number: 5
+  number: 6
   skip: True  # [win]
 
 requirements:
@@ -35,6 +35,7 @@ requirements:
     - pango
     - pixman
     - pyqt
+    - sip
 
 test:
   imports:
