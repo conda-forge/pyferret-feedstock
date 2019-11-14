@@ -1,0 +1,202 @@
+diff --git a/pviewmod/cmndhelperpq.py b/pviewmod/cmndhelperpq.py
+index 0fb6b4014..bd9f9e70d 100644
+--- a/pviewmod/cmndhelperpq.py
++++ b/pviewmod/cmndhelperpq.py
+@@ -9,15 +9,6 @@ Administration's (NOAA) Pacific Marine Environmental Lab (PMEL).
+ 
+ import sys
+ 
+-try:
+-    import sip
+-except ImportError:
+-    import PyQt4.sip as sip
+-try:
+-    sip.setapi('QVariant', 2)
+-except Exception:
+-    pass
+-
+ # First try to import PyQt5, then try PyQt4 if that fails
+ try:
+     import PyQt5
+diff --git a/pviewmod/pipedimagerpq.py b/pviewmod/pipedimagerpq.py
+index 79191776c..817732c46 100644
+--- a/pviewmod/pipedimagerpq.py
++++ b/pviewmod/pipedimagerpq.py
+@@ -20,15 +20,6 @@ import os
+ import time
+ import signal
+ 
+-try:
+-    import sip
+-except ImportError:
+-    import PyQt4.sip as sip
+-try:
+-    sip.setapi('QVariant', 2)
+-except Exception:
+-    pass
+-
+ # First try to import PyQt5, then try PyQt4 if that fails
+ try:
+     import PyQt5
+@@ -650,7 +641,10 @@ class PipedImagerPQ(QMainWindow):
+         milliseconds have passed.
+         '''
+         try:
+-            starttime = time.clock()
++            if (sys.version_info[0] >= 3) and (sys.version_info[1] >= 3):
++                starttime = time.process_time()
++            else:
++                starttime = time.clock()
+             # Wait up to 2 milliseconds waiting for a command.
+             # This prevents unchecked spinning when there is
+             # nothing to do (Qt immediately calling this method
+@@ -662,7 +656,11 @@ class PipedImagerPQ(QMainWindow):
+                 # more than 50 milliseconds have passed.
+                 # This reduces Qt overhead when there are lots
+                 # of commands waiting in the queue.
+-                if (time.clock() - starttime) > 0.050:
++                if (sys.version_info[0] >= 3) and (sys.version_info[1] >= 3):
++                    elapsed = time.process_time() - starttime
++                else:
++                    elapsed = time.clock() - starttime
++                if elapsed > 0.050:
+                     break
+         except EOFError:
+             # Assume PyFerret has shut down
+diff --git a/pviewmod/pipedviewerpq.py b/pviewmod/pipedviewerpq.py
+index ac4f93a6d..017344b73 100644
+--- a/pviewmod/pipedviewerpq.py
++++ b/pviewmod/pipedviewerpq.py
+@@ -21,15 +21,6 @@ import signal
+ import time
+ import math
+ 
+-try:
+-    import sip
+-except ImportError:
+-    import PyQt4.sip as sip
+-try:
+-    sip.setapi('QVariant', 2)
+-except Exception:
+-    pass
+-
+ # First try to import PyQt5, then try PyQt4 if that fails
+ try:
+     import PyQt5
+@@ -928,7 +919,10 @@ class PipedViewerPQ(QMainWindow):
+         milliseconds have passed.
+         '''
+         try:
+-            starttime = time.clock()
++            if (sys.version_info[0] >= 3) and (sys.version_info[1] >= 3):
++                starttime = time.process_time()
++            else:
++                starttime = time.clock()
+             # Wait up to 2 milliseconds waiting for a command.
+             # This prevents unchecked spinning when there is
+             # nothing to do (Qt immediately calling this method
+@@ -940,7 +934,11 @@ class PipedViewerPQ(QMainWindow):
+                 # more than 50 milliseconds have passed.
+                 # This reduces Qt overhead when there are lots
+                 # of commands waiting in the queue.
+-                if (time.clock() - starttime) > 0.050:
++                if (sys.version_info[0] >= 3) and (sys.version_info[1] >= 3):
++                    elapsed = time.process_time() - starttime
++                else:
++                    elapsed = time.clock() - starttime
++                if elapsed > 0.050:
+                     break
+         except EOFError:
+             # Assume PyFerret has shut down
+diff --git a/pviewmod/scaledialogpq.py b/pviewmod/scaledialogpq.py
+index 3154186ae..a556cc939 100644
+--- a/pviewmod/scaledialogpq.py
++++ b/pviewmod/scaledialogpq.py
+@@ -10,15 +10,6 @@ from __future__ import print_function
+ 
+ import sys
+ 
+-try:
+-    import sip
+-except ImportError:
+-    import PyQt4.sip as sip
+-try:
+-    sip.setapi('QVariant', 2)
+-except Exception:
+-    pass
+-
+ # First try to import PyQt5, then try PyQt4 if that fails
+ try:
+     import PyQt5
+diff --git a/pyfermod/__init__.py b/pyfermod/__init__.py
+index 5e45286b7..c8dfe65ea 100644
+--- a/pyfermod/__init__.py
++++ b/pyfermod/__init__.py
+@@ -86,6 +86,13 @@ from pyferret.fermethods import *
+ 
+ # bindings for the PyQt-based graphics engines
+ import pipedviewer.pyferretbindings
++try:
++    # the one-time setting of multiprocessing start method, 
++    # if supported, set to spawn to avoid Qt issues
++    import multiprocessing
++    multiprocessing.set_start_method('spawn')
++except:
++    pass
+ 
+ from pyferret import graphbind
+ from pyferret import regrid
+@@ -490,8 +497,9 @@ def start(memsize=25, journal=True, verify=False, restrict=False,
+           server=False, unmapped=False, pngonly=False, quiet=False, 
+           linebuffer=False, metaname=None, transparent=False):
+     """
+-    Initializes Ferret from the arguments given.  
+-    Executes any Ferret commands given in $HOME/.ferret
++    Initializes Ferret from the arguments given.  If not restricted,
++    executes any Ferret commands given in ./.ferret if it exists,
++    or $HOME/.ferret if it exists and ./.ferret does not exist.
+ 
+     Arguments:
+         memsize: (number)     the maximum amount on memory, in mega (10^6) floats 
+@@ -790,19 +798,29 @@ def start(memsize=25, journal=True, verify=False, restrict=False,
+     for fname in std_pyefs:
+         result = run("define pyfunc pyferret.%s" % fname)
+ 
+-    # run the ${HOME}/.ferret script if it exists and not in a restricted environment
++    # if not in a restricted environment, run the ./.ferret if it exists, 
++    # or ${HOME}/.ferret script if exists and ./ferret does not
+     if not restrict:
+-        home_val = os.getenv('HOME')
+-        if home_val:
+-            init_script = os.path.join(home_val, '.ferret')
+-            if os.path.exists(init_script):
+-                try:
+-                    result = run('go "%s"; exit /topy' % init_script)
+-                except:
+-                    print(" **Error: exception raised in runnning script %s" % init_script, file=sys.stderr)
+-                    result = run('exit /program')
+-                    # should not get here
+-                    raise SystemExit
++        if os.path.exists('./.ferret'):
++            try:
++                result = run('go "./.ferret"; exit /topy')
++            except:
++                print(" **Error: exception raised in runnning script ./.ferret", file=sys.stderr)
++                result = run('exit /program')
++                # should not get here
++                raise SystemExit
++        else:
++            home_val = os.getenv('HOME')
++            if home_val:
++                init_script = os.path.join(home_val, '.ferret')
++                if os.path.exists(init_script):
++                    try:
++                        result = run('go "%s"; exit /topy' % init_script)
++                    except:
++                        print(" **Error: exception raised in runnning script %s" % init_script, file=sys.stderr)
++                        result = run('exit /program')
++                        # should not get here
++                        raise SystemExit
+ 
+     # if journaling desired, turn it on now
+     if journal:
