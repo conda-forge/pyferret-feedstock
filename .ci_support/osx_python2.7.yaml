@@ -21,7 +21,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 netcdf_fortran:
-- '4.4'
+- '4.5'
 numpy:
 - '1.14'
 pango:
