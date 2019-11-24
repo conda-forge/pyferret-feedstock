@@ -17,7 +17,7 @@ fortran_compiler_version:
 libnetcdf:
 - 4.7.1
 netcdf_fortran:
-- '4.4'
+- '4.5'
 numpy:
 - '1.14'
 pango:
