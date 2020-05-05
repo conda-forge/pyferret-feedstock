@@ -42,3 +42,6 @@ pixman:
 - '0.38'
 python:
 - 3.8.* *_cpython
+zip_keys:
+- - numpy
+  - python

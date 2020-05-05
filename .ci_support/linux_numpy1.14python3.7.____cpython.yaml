@@ -37,4 +37,7 @@ pin_run_as_build:
 pixman:
 - '0.38'
 python:
-- 3.8.* *_cpython
+- 3.7.* *_cpython
+zip_keys:
+- - numpy
+  - python
