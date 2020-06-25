@@ -1,4 +1,4 @@
-{% set version = "7.5.0" %}
+{% set version = "7.6.0" %}
 
 package:
   name: pyferret
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}.tar.gz
-  sha256: 5e18051e6e68374445a3bdd08fff278f50f03d94f32d6f7960afcd587266216b
+  sha256: 90fe904cc947f0d019b379d59695a40c928a21b63b3b2e784e8a272d87ad6254
   patches:
     - intel-mac.patch  # [osx]
     - pyferret.patch
 
 build:
-  number: 11
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
@@ -45,7 +45,7 @@ about:
   home: http://ferret.pmel.noaa.gov/Ferret
   license: MIT
   license_file: LICENSE
-  summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
+  summary: An Analysis Tool for Gridded and Non-Gridded Data.
 
 extra:
   recipe-maintainers:
