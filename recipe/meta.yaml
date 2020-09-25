@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}.tar.gz
-  sha256: 90fe904cc947f0d019b379d59695a40c928a21b63b3b2e784e8a272d87ad6254
+  sha256: dcae80f9d7e33de67eee7b7431d8e44054601b6daa78ba0298a0032269ab224e
   patches:
     - intel-mac.patch  # [osx]
 
