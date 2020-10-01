@@ -1,27 +1,25 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '10'
+- '7'
 cairo:
 - '1.16'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+docker_image:
+- condaforge/linux-anvil-comp7
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '7.5'
+- '7'
 libnetcdf:
 - 4.7.4
-macos_machine:
-- x86_64-apple-darwin13.4.0
 netcdf_fortran:
 - '4.5'
 numpy:
-- '1.16'
+- '1.18'
 pango:
 - '1.42'
 pin_run_as_build:
@@ -39,6 +37,9 @@ pin_run_as_build:
 pixman:
 - '0.38'
 python:
-- 3.8.* *_cpython
+- 3.6.* *_73_pypy
 target_platform:
-- osx-64
+- linux-64
+zip_keys:
+- - numpy
+  - python
