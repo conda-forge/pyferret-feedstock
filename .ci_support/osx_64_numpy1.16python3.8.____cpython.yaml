@@ -13,7 +13,7 @@ channel_targets:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '7.5'
+- '7'
 libnetcdf:
 - 4.7.4
 macos_machine:
@@ -39,6 +39,11 @@ pin_run_as_build:
 pixman:
 - '0.38'
 python:
-- 3.7.* *_cpython
+- 3.8.* *_cpython
 target_platform:
 - osx-64
+zip_keys:
+- - c_compiler_version
+  - fortran_compiler_version
+- - python
+  - numpy
