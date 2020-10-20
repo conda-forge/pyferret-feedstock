@@ -1,0 +1,49 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+c_compiler:
+- clang
+c_compiler_version:
+- '10'
+cairo:
+- '1.16'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '9'
+libnetcdf:
+- 4.7.4
+macos_machine:
+- x86_64-apple-darwin13.4.0
+netcdf_fortran:
+- '4.5'
+numpy:
+- '1.19'
+pango:
+- '1.42'
+pin_run_as_build:
+  cairo:
+    max_pin: x.x
+  netcdf-fortran:
+    max_pin: x.x
+  pango:
+    max_pin: x.x
+  pixman:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+pixman:
+- '0.38'
+python:
+- 3.9.* *_cpython
+target_platform:
+- osx-64
+zip_keys:
+- - c_compiler_version
+  - fortran_compiler_version
+- - python
+  - numpy
