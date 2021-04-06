@@ -1,17 +1,18 @@
-{% set version = "7.6.3" %}
+{% set version = "7.7.0.dev0" %}
+{% set commit = "7be744a0ca47e5827c2b2197b8fd8d6eec100135" %}
 
 package:
   name: pyferret
   version: {{ version }}
 
 source:
-  url: https://github.com/NOAA-PMEL/PyFerret/archive/v{{ version }}.tar.gz
-  sha256: f062c20bedf64713f57c3d45aaeb63eb9b4d3ba622e5c5e4a99e61fdf08d2224
+  url: https://github.com/NOAA-PMEL/PyFerret/archive/{{ commit }}.tar.gz
+  sha256: a56bd34fed70c793b6dccacb16eeacea973227bdaec165509e2ca2453d24f1c3
   patches:
     - intel-mac.patch  # [osx]
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win]
 
 requirements:
