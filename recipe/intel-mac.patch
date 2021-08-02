@@ -6,6 +6,4 @@
  
 -	FFLAGS		= -fPIC \
 +	FFLAGS		= -fPIC -static-libgfortran \
- 			  -fallow-invalid-boz \
- 			  -fallow-argument-mismatch \
  			  -fno-automatic \
