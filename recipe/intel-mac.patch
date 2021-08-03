@@ -1,9 +1,13 @@
---- PyFerret-7.6.4-beta.orig/platform_specific.mk.intel-mac	2021-04-29 17:47:15.000000000 -0300
-+++ PyFerret-7.6.4-beta/platform_specific.mk.intel-mac	2021-07-30 13:42:05.129380884 -0300
-@@ -103,7 +103,7 @@
- 
- 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
- 
+---  PyFerret-7.6.4-beta/platform_specific.mk.intel-mac	2021-07-30 13:42:05.129380884 -0300
++++ PyFerret-7.6.4-beta/platform_specific.mk.intel-mac	2021-08-03 10:08:00.000000000 -0300
+@@ -104,3 +104,1 @@
+
+	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
+  
 -	FFLAGS		= -fPIC \
+- 			  -fallow-invalid-boz \
+-			   -fallow-argument-mismatch \
+			  -fno-automatic \
+
 +	FFLAGS		= -fPIC -static-libgfortran \
- 			  -fno-automatic \
+			  -fno-automatic \
