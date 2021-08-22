@@ -23,6 +23,7 @@ requirements:
     - numpy
     - netcdf-fortran
     - libnetcdf
+    - glib
     - cairo
     - pango
     - pixman

@@ -16,6 +16,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '9'
+glib:
+- '2'
 libnetcdf:
 - 4.7.4
 netcdf_fortran:
