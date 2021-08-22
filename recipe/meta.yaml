@@ -24,6 +24,7 @@ requirements:
     - netcdf-fortran
     - libnetcdf
     - glib
+    - harfbuzz  # [linux]
     - cairo
     - pango
     - pixman
