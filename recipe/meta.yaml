@@ -11,7 +11,7 @@ source:
     - intel-mac.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
@@ -20,18 +20,20 @@ requirements:
     - {{ compiler('fortran') }}
   host:
     - python
-    - numpy
-    - netcdf-fortran
-    - libnetcdf
     - cairo
+    - glib
+    - libnetcdf
+    - netcdf-fortran
+    - numpy
     - pango
     - pixman
   run:
     - python
-    - numpy
-    - netcdf-fortran
-    - libnetcdf
     - cairo
+    - glib
+    - libnetcdf
+    - netcdf-fortran
+    - numpy
     - pango
     - pixman
     - pyqt
