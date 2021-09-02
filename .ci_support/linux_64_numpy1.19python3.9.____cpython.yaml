@@ -16,6 +16,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '9'
+glib:
+- '2'
 libnetcdf:
 - 4.8.1
 netcdf_fortran:
@@ -23,7 +25,7 @@ netcdf_fortran:
 numpy:
 - '1.19'
 pango:
-- '1.42'
+- '1.48'
 pin_run_as_build:
   cairo:
     max_pin: x.x
