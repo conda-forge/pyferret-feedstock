@@ -19,7 +19,7 @@ fortran_compiler_version:
 glib:
 - '2'
 libnetcdf:
-- 4.7.4
+- 4.8.1
 netcdf_fortran:
 - '4.5'
 numpy:
