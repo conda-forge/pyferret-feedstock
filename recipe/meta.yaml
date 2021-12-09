@@ -27,7 +27,6 @@ requirements:
     - numpy
     - pango
     - pixman
-    - harfbuzz
   run:
     - python
     - cairo
@@ -38,7 +37,6 @@ requirements:
     - pango
     - pixman
     - pyqt
-    - harfbuzz
 
 test:
   imports:
