@@ -1,10 +1,11 @@
---- platform_specific.mk.x86_64-linux
-+++ platform_specific.mk.x86_64-linux
-@@ -38,6 +38,6 @@ endif
-
-ifeq ($(strip $(PANGO_LIBDIR)),)
-	PANGO_INCLUDE	= -I/usr/include/pango-1.0
-else
-- PANGO_INCLUDE	= -I$(PANGO_LIBDIR)/../include/pango-1.0
-+ PANGO_INCLUDE	= -I$(PANGO_LIBDIR)/../include/pango-1.0 -I$(PANGO_LIBDIR)/../include/harfbuzz
-endif
+--- a/platform_specific.mk.x86_64-linux
++++ b/platform_specific.mk.x86_64-linux
+@@ -39,7 +39,7 @@ endif
+ ifeq ($(strip $(PANGO_LIBDIR)),)
+        PANGO_INCLUDE   = -I/usr/include/pango-1.0
+ else
+-       PANGO_INCLUDE   = -I$(PANGO_LIBDIR)/../include/pango-1.0
++       PANGO_INCLUDE   = -I$(PANGO_LIBDIR)/../include/pango-1.0 -I$(PANGO_LIBDIR)/../include/harfbuzz
+ endif
+ 
+ ifeq ($(strip $(GLIB2_LIBDIR)),)
