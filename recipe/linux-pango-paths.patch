@@ -1,6 +1,6 @@
 --- platform_specific.mk.x86_64-linux
 +++ platform_specific.mk.x86_64-linux
-@@ -38,6 +37,6 @@ endif
+@@ -38,6 +38,6 @@ endif
 
 ifeq ($(strip $(PANGO_LIBDIR)),)
 	PANGO_INCLUDE	= -I/usr/include/pango-1.0
