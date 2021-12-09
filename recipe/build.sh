@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/env bash
+
+set -x 
 
 if [ $(uname) == Darwin ]; then
     export HOSTTYPE="intel-mac"
@@ -13,6 +15,22 @@ elif [[ $(uname) == Linux ]]; then
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
 fi
+
+# # Pango uses harfbuzz whose include files may reside in their own "harfbuzz" subdirectory 
+# # but the source files do not include this subdirectory in the includes statements
+# ifeq ($(strip $(PANGO_LIBDIR)),)
+# ifeq ($(shell /bin/ls -d /usr/include/harfbuzz 2>/dev/null),/usr/include/harfbuzz)
+# 	PANGO_INCLUDE	= -I/usr/include/pango-1.0 -I/usr/include/harfbuzz
+# else
+# 	PANGO_INCLUDE	= -I/usr/include/pango-1.0
+# endif
+# else
+# ifeq ($(shell /bin/ls -d $(PANGO_LIBDIR)/../include/harfbuzz 2>/dev/null),$(PANGO_LIBDIR)/../include/harfbuzz)
+# 	PANGO_INCLUDE	= -I$(PANGO_LIBDIR)/../include/pango-1.0 -I$(PANGO_LIBDIR)/../include/harfbuzz
+# else
+# 	PANGO_INCLUDE	= -I$(PANGO_LIBDIR)/../include/pango-1.0
+# endif
+# endif
 
 export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
 export CFLAGS=$(echo "${CFLAGS}" | sed "s/-O2/-O1/g")
