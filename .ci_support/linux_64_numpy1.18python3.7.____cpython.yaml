@@ -18,8 +18,6 @@ fortran_compiler_version:
 - '9'
 glib:
 - '2'
-harfbuzz:
-- '3'
 libnetcdf:
 - 4.8.1
 netcdf_fortran:
@@ -31,8 +29,6 @@ pango:
 pin_run_as_build:
   cairo:
     max_pin: x.x
-  harfbuzz:
-    max_pin: x
   netcdf-fortran:
     max_pin: x.x
   pango:
