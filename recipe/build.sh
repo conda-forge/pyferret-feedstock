@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 if [ $(uname) == Darwin ]; then
     export HOSTTYPE="intel-mac"
@@ -12,6 +12,8 @@ elif [[ $(uname) == Linux ]]; then
     export GFORTRAN_LIB=""
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
+    # try adding harfbuzz path explicity?
+    export PATH="$PREFIX/lib/pkgs/harfbuzz-*/include/harfbuzz:$PATH"
 fi
 
 export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
