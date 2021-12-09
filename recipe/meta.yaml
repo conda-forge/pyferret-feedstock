@@ -19,6 +19,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
+    - cairo
+    
   host:
     - python
     - cairo
