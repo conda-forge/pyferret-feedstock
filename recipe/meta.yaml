@@ -28,7 +28,7 @@ requirements:
     - numpy
     - pango
     - pixman
-    - harfbuzz
+
   run:
     - python
     - cairo
