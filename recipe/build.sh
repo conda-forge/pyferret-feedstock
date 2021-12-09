@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+set -x 
+
 if [ $(uname) == Darwin ]; then
     export HOSTTYPE="intel-mac"
     export FER_DIR="$PREFIX"
@@ -13,7 +15,7 @@ elif [[ $(uname) == Linux ]]; then
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
     # try adding harfbuzz path explicity?
-    export PATH="$PREFIX/lib/pkgs/harfbuzz-*/include/harfbuzz:$PATH"
+    export PATH="$PREFIX/pkgs/harfbuzz-*/include/harfbuzz:$PATH"
 fi
 
 export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
