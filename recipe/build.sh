@@ -14,9 +14,6 @@ elif [[ $(uname) == Linux ]]; then
     export GFORTRAN_LIB=""
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
-    # try adding harfbuzz path explicity?
-    export PATH="$CONDA_PREFIX/include/harfbuzz:$PATH"
-    ls $CONDA_PREFIX/include/harfbuzz
 fi
 
 # # Pango uses harfbuzz whose include files may reside in their own "harfbuzz" subdirectory 
