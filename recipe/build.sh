@@ -15,7 +15,8 @@ elif [[ $(uname) == Linux ]]; then
     export CFLAGS="$CFLAGS -Wno-strict-aliasing"
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
     # try adding harfbuzz path explicity?
-    export PATH="$PREFIX/pkgs/harfbuzz-*/include/harfbuzz:$PATH"
+    export PATH="$CONDA_PREFIX/include/harfbuzz:$PATH"
+    ls $CONDA_PREFIX/include/harfbuzz
 fi
 
 export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
