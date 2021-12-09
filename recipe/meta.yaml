@@ -9,7 +9,7 @@ source:
   sha256: f062c20bedf64713f57c3d45aaeb63eb9b4d3ba622e5c5e4a99e61fdf08d2224
   patches:
     - intel-mac.patch  # [osx]
-    - patch
+    - patch.diff
 
 build:
   number: 2
