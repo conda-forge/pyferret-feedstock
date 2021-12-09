@@ -18,7 +18,7 @@ elif [[ $(uname) == Linux ]]; then
     export PATH="$CONDA_PREFIX/include/harfbuzz:$PATH"
     ls $CONDA_PREFIX/include/harfbuzz
     # see below
-    export PANGO_INCLUDE = -I$CONDA_PREFIX/include/harfbuzz
+    PANGO_INCLUDE = -I$CONDA_PREFIX/include/harfbuzz
 fi
 
 # # Pango uses harfbuzz whose include files may reside in their own "harfbuzz" subdirectory 
