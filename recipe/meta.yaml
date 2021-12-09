@@ -20,7 +20,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
-    - harfbuzz
     
   host:
     - python
@@ -59,3 +58,4 @@ extra:
     - josborne-noaa
     - karlmattsmith
     - ocefpaf
+    - ngam
