@@ -20,7 +20,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
-    - cairo
     - harfbuzz
     
   host:
