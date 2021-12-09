@@ -173,5 +173,6 @@ Feedstock Maintainers
 * [@eugeneburger](https://github.com/eugeneburger/)
 * [@josborne-noaa](https://github.com/josborne-noaa/)
 * [@karlmattsmith](https://github.com/karlmattsmith/)
+* [@ngam](https://github.com/ngam/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 
