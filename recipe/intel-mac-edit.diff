@@ -1,0 +1,27 @@
+diff --git a/platform_specific.mk.intel-mac b/platform_specific.mk.intel-mac_now
+index b260f4f..9295d4c 100644
+--- a/platform_specific.mk.intel-mac
++++ b/platform_specific.mk.intel-mac_now
+@@ -103,9 +103,7 @@ endif
+ 
+ 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+-	FFLAGS		= -fPIC \
+-			  -fallow-invalid-boz \
+-			  -fallow-argument-mismatch \
++	FFLAGS		= -fPIC -static-libgfortran \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
+@@ -117,10 +115,8 @@ endif
+ 			  -fdefault-double-8 \
+ 			  $(MYDEFINES) $(MYINCLUDES)
+ 
+-	PPLUS_FFLAGS	= -fPIC \
++	PPLUS_FFLAGS	= -fPIC -static-libgfortran \
+ 			  -fno-automatic \
+-			  -fallow-invalid-boz \
+-			  -fallow-argument-mismatch \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
+ 			  -ffixed-line-length-132 \
