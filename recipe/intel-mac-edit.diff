@@ -1,7 +1,7 @@
-diff --git a/platform_specific.mk.intel-mac b/platform_specific.mk.intel-mac_now
+diff --git a/platform_specific.mk.intel-mac b/platform_specific.mk.intel-mac
 index b260f4f..a056421 100644
 --- a/platform_specific.mk.intel-mac
-+++ b/platform_specific.mk.intel-mac_now
++++ b/platform_specific.mk.intel-mac
 @@ -103,9 +103,7 @@ endif
  
  	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
