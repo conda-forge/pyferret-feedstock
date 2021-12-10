@@ -9,7 +9,7 @@ cairo:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge pyferret_dev
+- conda-forge main
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
