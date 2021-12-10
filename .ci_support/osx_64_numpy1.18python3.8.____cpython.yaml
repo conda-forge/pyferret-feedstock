@@ -7,7 +7,7 @@ c_compiler_version:
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge pyferret_dev
 fortran_compiler:
@@ -17,7 +17,7 @@ fortran_compiler_version:
 glib:
 - '2'
 libnetcdf:
-- 4.7.4
+- 4.8.1
 macos_machine:
 - x86_64-apple-darwin13.4.0
 netcdf_fortran:
@@ -25,7 +25,7 @@ netcdf_fortran:
 numpy:
 - '1.18'
 pango:
-- '1.42'
+- '1.48'
 pin_run_as_build:
   cairo:
     max_pin: x.x
