@@ -1,6 +1,6 @@
 --- a/platform_specific.mk.intel-mac
 +++ b/platform_specific.mk.intel-mac
-@@ -104,5 +104,4 @@
+@@ -104,6 +104,4 @@
 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
   
 -	FFLAGS		= -fPIC \
