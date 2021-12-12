@@ -1,0 +1,11 @@
+--- platform_specific.mk.intel-mac
++++ platform_specific.mk.intel-mac
+@@ -96,7 +96,7 @@ endif
+ 
+ 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+-	FFLAGS		= -fPIC \
++	FFLAGS		= -fPIC -static-libgfortran \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
