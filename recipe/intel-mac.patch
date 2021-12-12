@@ -1,10 +1,11 @@
---- a/platform_specific.mk.intel-mac
-+++ b/platform_specific.mk.intel-mac
-@@ -104,6 +104,4 @@
-	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
-  
+--- platform_specific.mk.intel-mac
++++ platform_specific.mk.intel-mac
+@@ -96,7 +96,7 @@ endif
+ 
+ 	CFLAGS		= -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
 -	FFLAGS		= -fPIC \
-- 			  -fallow-invalid-boz \
--			   -fallow-argument-mismatch \
 +	FFLAGS		= -fPIC -static-libgfortran \
-			  -fno-automatic \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
