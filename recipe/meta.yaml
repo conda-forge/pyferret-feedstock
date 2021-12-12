@@ -9,10 +9,9 @@ source:
   sha256: 965ad4b8f71adbb3d4d3ba9aa9f22ac485a7c0489f312c534afc190eebca0e59
   patches:
     - intel-mac-edit.diff  # [osx]
-    - patch.diff  # [linux64]
+    - patch-linux-pango.diff  # [linux64]
 
 build:
-  number: 0
   number: 4
   skip: True  # [win]
 
@@ -52,7 +51,15 @@ about:
   license: MIT
   license_file: LICENSE
   summary: 'An Analysis Tool for Gridded and Non-Gridded Data.'
+  description: |
+    The PyFerret program and Python module from NOAA/PMEL.
+    See https://ferret.pmel.noaa.gov/Ferret/ for more information about Ferret and PyFerret.
 
+    This repository is regularly synchronized with PyFerret repository at PMEL 
+    (the pyferret branch of the ferret project in the subversion repository at PMEL) using git-svn.
+
+  dev_url: https://github.com/NOAA-PMEL/PyFerret
+  doc_url: https://ferret.pmel.noaa.gov/Ferret/
 extra:
   recipe-maintainers:
     - eugeneburger

@@ -9,6 +9,17 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyferret-feedst
 
 Summary: An Analysis Tool for Gridded and Non-Gridded Data.
 
+Development: https://github.com/NOAA-PMEL/PyFerret
+
+Documentation: https://ferret.pmel.noaa.gov/Ferret/
+
+The PyFerret program and Python module from NOAA/PMEL.
+See https://ferret.pmel.noaa.gov/Ferret/ for more information about Ferret and PyFerret.
+
+This repository is regularly synchronized with PyFerret repository at PMEL
+(the pyferret branch of the ferret project in the subversion repository at PMEL) using git-svn.
+
+
 Current build status
 ====================
 
