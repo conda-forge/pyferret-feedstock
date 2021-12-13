@@ -24,7 +24,7 @@ requirements:
   host:
     - python
     - cairo
-#     - glib
+    - glib
     - libnetcdf
     - netcdf-fortran
     - numpy
@@ -34,7 +34,7 @@ requirements:
   run:
     - python
     - cairo
-#     - glib
+    - glib
     - libnetcdf
     - netcdf-fortran
     - numpy
