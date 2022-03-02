@@ -45,6 +45,8 @@ requirements:
 test:
   imports:
     - pyferret
+  commands:
+    - conda list | grep pyferret
 
 about:
   home: http://ferret.pmel.noaa.gov/Ferret
