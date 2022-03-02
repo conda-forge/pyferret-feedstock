@@ -9,13 +9,13 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge pyferret_dev
+- conda-forge main
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '10'
+- '9'
 glib:
 - '2'
 libnetcdf:
