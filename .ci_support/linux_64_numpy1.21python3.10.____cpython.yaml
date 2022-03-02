@@ -15,7 +15,7 @@ docker_image:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '9'
+- '10'
 glib:
 - '2'
 libnetcdf:
