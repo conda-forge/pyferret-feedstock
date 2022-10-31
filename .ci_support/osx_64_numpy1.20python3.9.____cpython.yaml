@@ -3,9 +3,9 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '11'
+- '14'
 cairo:
-- '1.16'
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '9'
+- '11'
 glib:
 - '2'
 libnetcdf:
@@ -23,23 +23,17 @@ macos_machine:
 netcdf_fortran:
 - '4.5'
 numpy:
-- '1.18'
+- '1.20'
 pango:
 - '1.50'
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
-  netcdf-fortran:
-    max_pin: x.x
-  pango:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 pixman:
 - '0'
 python:
-- 3.8.* *_cpython
+- 3.9.* *_cpython
 target_platform:
 - osx-64
 zip_keys:
