@@ -1,9 +1,9 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '10'
 cairo:
-- '1.16'
+- '1'
 cdt_name:
 - cos6
 channel_sources:
@@ -15,7 +15,7 @@ docker_image:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '9'
+- '10'
 glib:
 - '2'
 libnetcdf:
@@ -23,16 +23,10 @@ libnetcdf:
 netcdf_fortran:
 - '4.5'
 numpy:
-- '1.19'
+- '1.20'
 pango:
 - '1.50'
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
-  netcdf-fortran:
-    max_pin: x.x
-  pango:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
