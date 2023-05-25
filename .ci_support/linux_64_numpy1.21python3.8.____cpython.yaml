@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
+- '12'
 cairo:
 - '1'
 cdt_name:
@@ -15,7 +15,7 @@ docker_image:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '10'
+- '12'
 glib:
 - '2'
 libnetcdf:
@@ -23,7 +23,7 @@ libnetcdf:
 netcdf_fortran:
 - '4.5'
 numpy:
-- '1.20'
+- '1.21'
 pango:
 - '1.50'
 pin_run_as_build:
@@ -33,7 +33,7 @@ pin_run_as_build:
 pixman:
 - '0'
 python:
-- 3.9.* *_cpython
+- 3.8.* *_cpython
 target_platform:
 - linux-64
 zip_keys:
