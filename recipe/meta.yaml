@@ -10,6 +10,7 @@ source:
   patches:
     - intel-mac-edit.diff  # [osx]
     - patch-linux-pango.diff  # [linux64]
+    - patch-linux64-gnu-gfortran10.diff  # [linux64]
 
 build:
   number: 2
