@@ -21,7 +21,7 @@ libnetcdf:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 netcdf_fortran:
-- '4.5'
+- '4.6'
 numpy:
 - '1.21'
 pango:
