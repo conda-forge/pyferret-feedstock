@@ -16,6 +16,8 @@ elif [[ $(uname) == Linux ]]; then
     export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
 fi
 
+# allow gfortran 10 to compile
+export FFLAGS="$FFLAGS -fallow-invalid-boz"
 # # Pango uses harfbuzz whose include files may reside in their own "harfbuzz" subdirectory 
 # # but the source files do not include this subdirectory in the includes statements
 # ifeq ($(strip $(PANGO_LIBDIR)),)
