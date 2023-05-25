@@ -1,0 +1,44 @@
+diff --git a/platform_specific.mk.x86_64-linux-gnu b/platform_specific.mk.x86_64-linux-gnu-new
+index 40d2852..4115b45 100644
+--- a/platform_specific.mk.x86_64-linux-gnu
++++ b/platform_specific.mk.x86_64-linux-gnu-new
+@@ -94,6 +94,8 @@ endif
+ 	CFLAGS		= -m64 -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+ 	FFLAGS		= -m64 -fPIC \
++                          -fallow-invalid-boz \
++                          -fallow-argument-mismatch \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
+@@ -106,6 +108,8 @@ endif
+ 			  $(MYDEFINES) $(MYINCLUDES)
+ 
+ 	PPLUS_FFLAGS	= -m64 -fPIC \
++                          -fallow-invalid-boz \
++                          -fallow-argument-mismatch \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
+diff --git a/platform_specific.mk.x86_64-linux b/platform_specific.mk.x86_64-linux-new
+index d85bd75..ec35f1b 100644
+--- a/platform_specific.mk.x86_64-linux
++++ b/platform_specific.mk.x86_64-linux-new
+@@ -98,6 +98,8 @@ endif
+ 	CFLAGS		= -m64 -fPIC $(MYDEFINES) $(MYINCLUDES)
+ 
+ 	FFLAGS		= -m64 -fPIC \
++                          -fallow-invalid-boz \
++                          -fallow-argument-mismatch \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
+@@ -110,6 +112,8 @@ endif
+ 			  $(MYDEFINES) $(MYINCLUDES)
+ 
+ 	PPLUS_FFLAGS	= -m64 -fPIC \
++                          -fallow-invalid-boz \
++                          -fallow-argument-mismatch \
+ 			  -fno-automatic \
+ 			  -fno-second-underscore \
+ 			  -fdollar-ok \
