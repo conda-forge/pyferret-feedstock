@@ -17,7 +17,7 @@ fortran_compiler_version:
 glib:
 - '2'
 libnetcdf:
-- 4.8.1
+- 4.9.1
 macos_machine:
 - x86_64-apple-darwin13.4.0
 netcdf_fortran:
