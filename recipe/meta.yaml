@@ -13,7 +13,7 @@ source:
     - patch-linux64-gnu-gfortran10.diff  # [linux64]
 
 build:
-  number: 4
+  number: 5
   skip: true  # [win]
 
 requirements:
