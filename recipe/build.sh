@@ -36,7 +36,7 @@ export CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O1/g")
 export CFLAGS=$(echo "${CFLAGS}" | sed "s/-O2/-O1/g")
 export CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-O2/-O1/g")
 
-export PYTHONINCDIR=`$PYTHON -c "from __future__ import print_function ; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
+export PYTHONINCDIR=$(python -c 'import sysconfig; print(sysconfig.get_path("include"))')
 
 rm -f site_specific.mk
 echo "DIR_PREFIX = $SRC_DIR" > site_specific.mk
