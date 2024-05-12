@@ -23,7 +23,7 @@ libnetcdf:
 netcdf_fortran:
 - '4.6'
 numpy:
-- '1.21'
+- '1.22'
 pango:
 - '1.50'
 pin_run_as_build:
@@ -41,3 +41,4 @@ zip_keys:
   - fortran_compiler_version
 - - python
   - numpy
+  - channel_sources
