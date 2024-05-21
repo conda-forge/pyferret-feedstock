@@ -13,12 +13,13 @@ source:
     - patch-linux64-gnu-gfortran10.diff  # [linux64]
 
 build:
-  number: 6
+  number: 7
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - make
 
