@@ -1,0 +1,45 @@
+c_compiler:
+- gcc
+c_compiler_version:
+- '14'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
+cairo:
+- '1'
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge pyferret_dev
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '14'
+glib:
+- '2'
+libnetcdf:
+- 4.9.2
+netcdf_fortran:
+- '4.6'
+numpy:
+- '2'
+pango:
+- '1'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+pixman:
+- '0'
+python:
+- 3.12.* *_cpython
+target_platform:
+- linux-64
+zip_keys:
+- - c_compiler_version
+  - fortran_compiler_version
+- - python
+  - channel_sources
