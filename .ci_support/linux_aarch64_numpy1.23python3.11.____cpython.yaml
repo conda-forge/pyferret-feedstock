@@ -1,31 +1,31 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '15'
+- '13'
 cairo:
 - '1'
+cdt_name:
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge pyferret_dev
+docker_image:
+- quay.io/condaforge/linux-anvil-aarch64:alma9
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 glib:
 - '2'
 libnetcdf:
 - 4.9.2
-macos_machine:
-- x86_64-apple-darwin13.4.0
 netcdf_fortran:
 - '4.6'
 numpy:
-- '1.21'
+- '1.23'
 pango:
-- '1.50'
+- '1'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -33,9 +33,9 @@ pin_run_as_build:
 pixman:
 - '0'
 python:
-- 3.10.* *_cpython
+- 3.11.* *_cpython
 target_platform:
-- osx-64
+- linux-aarch64
 zip_keys:
 - - c_compiler_version
   - fortran_compiler_version
